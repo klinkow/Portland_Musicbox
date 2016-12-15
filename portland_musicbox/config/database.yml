@@ -1,0 +1,6 @@
+development:
+  adapter: postgresql
+  database: music_box_development
+test:
+  adapter: postgresql
+  database: music_box_test
