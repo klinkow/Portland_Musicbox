@@ -1,0 +1,110 @@
+/* ------ GENERAL STYLES ------ */
+
+body {
+  box-sizing: border-box;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+/* ------ SIGN UP BAR ------ */
+
+.sign-up-bar {
+  background-color: black;
+  height: 30px;
+}
+div.container {
+  padding: 0;
+}
+
+ul#log_in_ul {
+  padding: 0;
+}
+
+ul#log_in_ul li {
+  display: inline-block;
+  float: left;
+  padding: 0;
+}
+
+ul#log_in_ul li a {
+  color: white;
+  font-weight: bold;
+  position: relative;
+  bottom: -7px;
+}
+
+ul#log_in_ul li a:hover {
+  color: red;
+  text-decoration: line-through;
+}
+
+ul#log_in_ul li a:active {
+  color: red;
+}
+
+ul#create_account_ul li {
+  display: inline-block;
+  float: right;
+  padding: 0;
+  height: 30px;
+}
+
+ul#create_account_ul li:nth-child(2) {
+  padding-right: 20px;
+  margin-right: 20px;
+}
+
+
+ul#create_account_ul li a {
+  color: white;
+  font-weight: bold;
+  position: relative;
+  bottom: 3.5px;
+}
+
+/* ------ HEADER STYLES ------ */
+
+header.container h2 {
+  display: inline-block;
+}
+
+header.container h2 a{
+  color: red;
+  display: inline-block;
+  font-weight: 600;
+}
+
+header.container ul {
+  float: right;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  top: -31px;
+}
+
+header.container ul li {
+  display: inline-block;
+}
+
+header.container ul li a {
+    color: red;
+  }
+
+header.container ul li {
+  padding: 0 15px;
+}
+
+header.container ul li:last-child {
+  padding-right: 0;
+}
+
+header.container {
+  border-bottom: 1px solid red;
+  padding: 0;
+  height: 55px;
+}
