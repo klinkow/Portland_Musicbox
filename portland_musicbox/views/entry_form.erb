@@ -36,16 +36,58 @@
         <button type="submit" class="btn btn-danger">Create Account</button>
       </form>
     </div>
-    <% elsif @form == "login" %>
-    <div class="col-sm-4 col-sm-push-4"> <!--********* LOG IN FORM **************-->
+
+
+    <% elsif @form == "artist" %>
+
+
+    <div class="col-sm-4 col-sm-push-4"> <!--********* ARTIST FORM **************-->
       <form action="/artist/new" method="post">
-        <h2 class="text-center">LOG IN</h2>
+        <h2 class="text-center">Create New Artist Account</h2>
+        <div class="form-group">
+          <input required class="form-control" type="text" name="artist_name" placeholder="Artist or Band Name">
+        </div>
+        <div class="form-group">
+          <input required class="form-control" type="text" name="fname" placeholder="First Name">
+        </div>
+        <div class="form-group">
+          <input required class="form-control" type="text" name="lname" placeholder="Last ">
+        </div>
+        <div class="form-group">
+          <input required class="form-control" type="text" name="street" placeholder="Street Address">
+        </div>
+        <div class="form-group">
+          <input required class="form-control" type="text" name="city" placeholder="City">
+        </div>
+        <div class="form-group">
+          <input required class="form-control" type="text" name="state" placeholder="State">
+        </div>
+        <div class="form-group">
+          <input required class="form-control" type="text" name="zip" placeholder="Zip Code">
+        </div>
+        <div class="form-group">
+          <input required class="form-control" type="text" name="user_login" placeholder="Account Login Name">
+        </div>
+        <div class="form-group">
+          <input required class="form-control" type="text" name="user_pword" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <input required class="form-control" type="text" name="pword_verify" placeholder="Confirm Password">
+        </div>
+        <button type="submit" class="btn btn-danger">Create Account</button>
       </form>
     </div>
-    <% elsif @form == "artist" %>
-    <div class="col-sm-4 col-sm-push-4"> <!--********* NEW ARTIST FORM **************-->
-      <form action="/account" method="post">
-        <h2 class="text-center">Create New Artist Account</h2>
+    <% elsif @form == "login" %>
+    <div class="col-sm-4 col-sm-push-4"> <!--********* LOGIN FORM **************-->
+      <form action="/login/user" method="post">
+        <h2 class="text-center">LOG IN</h2>
+        <div class="form-group">
+          <input required class="form-control" type="text" name="login" placeholder="User Name">
+        </div>
+        <div class="form-group">
+          <input required class="form-control" type="text" name="pword" placeholder="Password">
+        </div>
+        <button class="btn btn-danger" type="submit">Log In</button>
       </form>
     </div>
 

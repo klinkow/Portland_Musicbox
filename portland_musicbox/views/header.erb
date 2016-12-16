@@ -2,10 +2,16 @@
   <div class="container">
 
     <ul id="log_in_ul">
-      <li><a href="/login">LOG IN</a></li>
+      <% if @user == [] %>
+        <li><a href="/login">LOG IN</a></li>
+      <% else %>
+        <li><a href="user/account/<%= @user[0].id %>"><%= @user[0].username %> is logged in</a></li>
+      <% end %>
     </ul>
 
+
     <ul id="create_account_ul">
+      <li><a>Cart: 0</a></li>
       <li><a href="/artist/new">CREATE ARTIST ACCOUNT</a></li>
       <li><a href="/user/new">CREATE USER ACCOUNT</a></li>
     </ul>

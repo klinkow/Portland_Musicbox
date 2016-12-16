@@ -54,7 +54,7 @@ ul#create_account_ul li {
   height: 30px;
 }
 
-ul#create_account_ul li:nth-child(2) {
+ul#create_account_ul li:nth-child(n+2) {
   padding-right: 20px;
   margin-right: 20px;
 }
