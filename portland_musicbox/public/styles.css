@@ -108,3 +108,31 @@ header.container {
   padding: 0;
   height: 55px;
 }
+
+/* ------ USER ARTIST MENU STYLES ------ */
+
+.user_artist_menu {
+  display: none;
+}
+
+
+.user_artist_menu li {
+  list-style: none;
+  text-align: right;
+  padding: 10px 0;
+}
+
+.user_artist_menu li a {
+  color: black;
+}
+
+.user_artist_menu li a:hover {
+  color: red;
+  text-decoration: line-through;
+}
+
+.enable_menu {
+  text-align: right;
+  border-bottom: 2px solid red;
+  font-weight: bold;
+}

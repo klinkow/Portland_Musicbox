@@ -1,14 +1,12 @@
 <%= erb :header %>
 
 <div class="container">
-  <div class="col-sm-4">
+  <div class="row">
+    <div class="col-sm-10">
+      <h3 class="">USER MENU</h3>
+    </div>
 
-    <ul>
-      <li><a>ADD ALBUM</a></li>
-      <li><a>SALES DATA</a></li>
-      <li><a>ACCOUNT INFO</a></li>
-      <li><a href="/logout/<%= @user[0].id %>">LOG OUT</a></li>
-    </ul>
+    <%= erb :user_dash_menu %>
 
   </div>
 </div>

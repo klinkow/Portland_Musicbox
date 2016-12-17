@@ -33,6 +33,7 @@ end
 
 get "/user/account/:id" do
   @user = User.where(current: true)
+  @artist = Artist.where(current: true)
   erb :user_dash
 end
 

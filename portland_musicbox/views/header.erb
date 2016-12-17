@@ -5,7 +5,7 @@
       <% if @user == [] %>
         <li><a href="/login">LOG IN</a></li>
       <% else %>
-        <li><a href="user/account/<%= @user[0].id %>"><%= @user[0].username %> is logged in</a></li>
+        <li><a href="/user/account/<%= @user[0].id %>"><%= @user[0].username %> is logged in</a></li>
       <% end %>
     </ul>
 
