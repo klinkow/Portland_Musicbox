@@ -4,7 +4,7 @@ Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 
 get '/' do
-  @user = User.where(current: true)
+  @user = User.find_by(current: true)
   erb :index
 end
 
@@ -13,17 +13,17 @@ get "/form_test" do
 end
 
 get '/:login' do
-  @user = User.where(current: true)
+  @user = User.find_by(current: true)
   @form = params["login"]
   erb :entry_form
 end
 
 post '/login/user' do
-  @user = User.where(username: params["login"])
-  if @user[0].password == params["pword"]
+  @user = User.find_by(username: params["login"])
+  if @user.password == params["pword"]
     @user.update(current: true)
-    id = @user[0].id
-    @artist = Artist.where(user_id: id)
+    id = @user.id
+    @artist = Artist.find(id)
     erb :user_dash
   else
     redirect to("/login")
@@ -31,21 +31,42 @@ post '/login/user' do
 end
 
 get "/logout/:id" do
-  id = params["id"].to_i
-  @user = User.find(id)
+  @user = User.find_by(current: true)
   @user.update(current: false)
   redirect("/")
 end
 
 get "/user/account/:id" do
-  @user = User.where(current: true)
-  id = @user[0].id
-  @artist = Artist.where(user_id: id)
+  @user = User.find_by({:current => true})
+  @artist = Artist.find(@user.id)
   erb :user_dash
 end
 
+get "/album/new" do
+  @form = "album"
+  @user = User.find_by({:current => true})
+  id = @user.id
+  @artist = Artist.find(id)
+  erb :user_dash
+end
+
+post "/album/new" do
+  @user = User.find_by({:current => true})
+  @artist = Artist.find(@user.id)
+  @artist.albums.push(Album.create(:name => params['name'], credits: params["credits"], album_photo_name: params["album_art"]))
+  binding.pry
+  @album = Album.find_by(:name => params["name"])
+  tracks = params["tracks"]
+  tracks.each do |t|
+    new_track = Track.create(name: t, track_number: tracks.index(t) + 1, artist_id: @artist.id)
+    @album.tracks.push(new_track)
+  end
+  redirect("user/account/:id")
+end
+
+
 get '/:user/new' do
-  @user = User.where(current: true)
+  @user = User.find_by({:current => true})
   @form = params["user"]
   erb :entry_form
 end
@@ -112,7 +133,7 @@ post '/save_image' do
 
   @filename = params[:file][:filename]
   file = params[:file][:tempfile]
-
+binding.pry
   File.open("./public/#{@filename}", 'wb') do |f|
     f.write(file.read)
   end
