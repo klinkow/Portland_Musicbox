@@ -1,0 +1,19 @@
+<h3>Write a review</h3>
+<form action="/reviews" method="post">
+  <label>Pick your artist to review:</label>
+  <select name="pick_artist">
+    <% @artist.each() do |artist| %>
+      <option value="<%= artist.id() %>"><%= artist.name() %></option>
+    <% end %>
+  </select>
+
+  <label>Pick your album to review:</label>
+  <select name="pick_album">
+    <% @artist.albums.each() do |album| %>
+      <option value="<%= album.id() %>"><%= album.name() %></option>
+    <% end %>
+  </select>
+
+  <input type="text" name="review_text" placeholder="Enter your review">
+  <input type="text" name="reviewer_name" placeholder="Sign your name">
+</form>

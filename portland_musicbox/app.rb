@@ -52,6 +52,7 @@ end
 
 
 get '/:artist/new' do
+  binding.pry
   @user = User.where(current: true)
   @form = params["user"]
   erb :entry_form
@@ -103,6 +104,17 @@ post "/user/new" do
   end
 end
 
+get "/new_review" do
+  binding.pry
+  @artists = Artist.all()
+  erb :new_review
+end
+
+get "/reviews" do
+  binding.pry
+  @artist = Artist.all()
+  erb :reviews
+end
 
 get "/form_test" do
   erb :form_test
