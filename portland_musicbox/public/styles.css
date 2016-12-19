@@ -109,7 +109,7 @@ header.container {
   height: 55px;
 }
 
-/* ------ USER ARTIST MENU STYLES ------ */
+/* ------ USER ARTIST DASHBOARD STYLES ------ */
 
 .user_artist_menu {
   display: none;
@@ -135,4 +135,9 @@ header.container {
   text-align: right;
   border-bottom: 2px solid red;
   font-weight: bold;
+}
+
+.band_name {
+  font-weight: bold;
+  border-bottom: 2px solid red;
 }

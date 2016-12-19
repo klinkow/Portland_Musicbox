@@ -8,6 +8,10 @@ get '/' do
   erb :index
 end
 
+get "/form_test" do
+  erb :form_test
+end
+
 get '/:login' do
   @user = User.where(current: true)
   @form = params["login"]
@@ -18,6 +22,8 @@ post '/login/user' do
   @user = User.where(username: params["login"])
   if @user[0].password == params["pword"]
     @user.update(current: true)
+    id = @user[0].id
+    @artist = Artist.where(user_id: id)
     erb :user_dash
   else
     redirect to("/login")
@@ -33,7 +39,8 @@ end
 
 get "/user/account/:id" do
   @user = User.where(current: true)
-  @artist = Artist.where(current: true)
+  id = @user[0].id
+  @artist = Artist.where(user_id: id)
   erb :user_dash
 end
 
@@ -62,11 +69,12 @@ post "/artist/new" do
   pword = params["user_pword"]
   pwordV = params["pword_verify"]
   if pword == pwordV
-    @user = User.new(fname: fname, lname: lname, street: street, city: city, state: state, zip: zip, username: username, password: pword, current: false, artist: true)
-    @artist = Artist.new(:name => artist)
-    if @user.save & @artist.save
+    @user = User.new(fname: fname, lname: lname, street: street, city: city, state: state, zip: zip, username: username, password: pword, current: false)
+    if @user.save
       @user.update(current: true)
-      @artist.update(artist: true)
+      id = @user.id
+      @artist = Artist.new(name: artist, user_id: id)
+      @artist.save
       redirect to('/user/account/'.concat(@user.id().to_s()))
     end
   else
@@ -93,4 +101,21 @@ post "/user/new" do
   else
     erb :error
   end
+end
+
+
+get "/form_test" do
+  erb :form_test
+end
+
+post '/save_image' do
+
+  @filename = params[:file][:filename]
+  file = params[:file][:tempfile]
+
+  File.open("./public/#{@filename}", 'wb') do |f|
+    f.write(file.read)
+  end
+
+  erb :show_image
 end
