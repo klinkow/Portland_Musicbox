@@ -4,6 +4,7 @@ Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 
 get '/' do
+  binding.pry
   @user = User.where(current: true)
   erb :index
 end

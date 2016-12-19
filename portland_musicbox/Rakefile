@@ -3,5 +3,5 @@ require('sinatra/activerecord/rake')
 require('zlib')
 
 namespace(:db) do
-  task(:load_configp)
+  task(:load_config)
 end
