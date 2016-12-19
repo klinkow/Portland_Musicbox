@@ -1,19 +1,41 @@
-<h3>Write a review</h3>
-<form action="/reviews" method="post">
-  <label>Pick your artist to review:</label>
-  <select name="pick_artist">
-    <% @artist.each() do |artist| %>
-      <option value="<%= artist.id() %>"><%= artist.name() %></option>
-    <% end %>
-  </select>
+<%= erb :header %>
 
-  <label>Pick your album to review:</label>
-  <select name="pick_album">
-    <% @artist.albums.each() do |album| %>
-      <option value="<%= album.id() %>"><%= album.name() %></option>
-    <% end %>
-  </select>
-
-  <input type="text" name="review_text" placeholder="Enter your review">
-  <input type="text" name="reviewer_name" placeholder="Sign your name">
-</form>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-push-4">
+      <h2 class="text-center">Write a Review</h2>
+      <form action="/new_review" method="post">
+        <label>Pick your artist to review:</label>
+        <br>
+        <div class="col-sm-9">
+          <select class="form-control" id="artist_id" name="artist_id" type="text">
+            <% @artists.each() do |artist| %>
+              <option value="<%= artist.id() %>"><%= artist.name() %></option>
+            <% end %>
+          </select>
+        </div>
+        <button type="submit" name="button" class="btn btn-danger">submit</button>
+      </form>
+      <br>
+      <% if @artist != nil %>
+      <form action="/reviews" method="post">
+        <label>Pick your album to review:</label>
+        <br>
+        <select name="pick_album" class="form-control">
+          <% @artist.albums.each() do |album| %>
+            <option value="<%= album.id() %>"><%= album.name() %></option>
+            <input type="hidden" name="album_id" value="<%= album.id() %>">
+          <% end %>
+        </select><br>
+        <textarea rows="10" cols="47" name="review_text" placeholder="Enter your review"></textarea>
+        <br>
+        <br>
+        <div class="col-sm-9">
+          <input type="text" name="reviewer_name" class="form-control" placeholder="Sign your name">
+        </div>
+        <button type="submit" name="button" class="btn btn-danger">submit</button>
+      </form>
+      <% end %>
+    </div>
+  </div>
+</div>

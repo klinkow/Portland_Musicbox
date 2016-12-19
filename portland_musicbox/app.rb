@@ -2,6 +2,36 @@ require("bundler/setup")
 Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
+get "/new_review" do
+  @user = User.where(current: true)
+  @artists = Artist.all()
+  @artist = nil
+  erb :new_review
+end
+
+post "/new_review" do
+  @user = User.where(current: true)
+  @artists = Artist.all()
+  @artist = Artist.find(params.fetch("artist_id").to_i()) rescue nil
+  erb :new_review
+end
+
+get "/reviews" do
+  @user = User.where(current: true)
+  @reviews = Review.all()
+  @artist = Artist.all()
+  erb :reviews
+end
+
+post "/reviews" do
+  @user = User.where(current: true)
+  album_id = params.fetch("album_id").to_i()
+  review_text = params.fetch("review_text")
+  reviewer_name = params.fetch("reviewer_name")
+  review = Review.create({:album_id => album_id, :author => reviewer_name, :text => review_text})
+  @reviews = Review.all()
+  erb :reviews
+end
 
 get '/' do
   @user = User.where(current: true)
@@ -52,7 +82,6 @@ end
 
 
 get '/:artist/new' do
-  binding.pry
   @user = User.where(current: true)
   @form = params["user"]
   erb :entry_form
@@ -102,18 +131,6 @@ post "/user/new" do
   else
     erb :error
   end
-end
-
-get "/new_review" do
-  binding.pry
-  @artists = Artist.all()
-  erb :new_review
-end
-
-get "/reviews" do
-  binding.pry
-  @artist = Artist.all()
-  erb :reviews
 end
 
 get "/form_test" do

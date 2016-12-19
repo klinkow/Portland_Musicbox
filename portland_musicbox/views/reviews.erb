@@ -1,7 +1,27 @@
+<%= erb :header %>
 
-
-
-
-<h1>hi</h1>
-
-<a href="/new_review">Add new review</a>
+<div class="container">
+  <% if @reviews.any?() %>
+    <h2>Here are the review(s):</h2>
+      <% @reviews.each() do |review| %>
+        <p class="well">"Artist: <%= Artist.find(Album.find(review.album_id().to_i).id().to_i()).name() %>
+          Album: <%= Album.find(review.album_id().to_i).name() %><%= review.text() %>"</p>
+          <p>by -<%= review.author %></p>
+      <% end %>
+  <% else %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 col-sm-push-4">
+        <h4>There are any review(s) for this album yet!</h4>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 col-sm-push-4">
+        <a class="btn btn-danger" href="/new_review">Add new review</a>
+      </div>
+    </div>
+  </div>
+</div>
