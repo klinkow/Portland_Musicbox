@@ -141,3 +141,8 @@ header.container {
   font-weight: bold;
   border-bottom: 2px solid red;
 }
+
+.album_photo {
+  width: 250px;
+  height: 250px;
+}

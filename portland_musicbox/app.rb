@@ -54,7 +54,6 @@ post "/album/new" do
   @user = User.find_by({:current => true})
   @artist = Artist.find(@user.id)
   @artist.albums.push(Album.create(:name => params['name'], credits: params["credits"], album_photo_name: params["album_art"]))
-  binding.pry
   @album = Album.find_by(:name => params["name"])
   tracks = params["tracks"]
   tracks.each do |t|

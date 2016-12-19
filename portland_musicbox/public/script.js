@@ -8,7 +8,7 @@
 $(document).ready(function() {
   toggle = function(click, reveal) {
     $(click).click(function() {
-      $(reveal).slideToggle(1000);
+      $(reveal).slideToggle();
     });
   };
 
