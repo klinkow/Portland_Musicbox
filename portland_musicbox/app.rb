@@ -34,10 +34,7 @@ post "/reviews" do
 end
 
 get '/' do
-<<<<<<< HEAD
   @user = User.find_by(current: true)
-=======
->>>>>>> 2990dc9ca31127ed889e09135185e7409bea8cdd
   erb :index
 end
 
