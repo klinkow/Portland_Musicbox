@@ -9,9 +9,9 @@
         </div>
       </div>
       <div class="col-sm-8">
-        <h3><%= @artist.name %></h3>
+        <h3><%= @album.artist.name %></h3>
         <h1 class="album_name"><%= @album.name %></h1>
-        <iframe style="border: 0; width: 100%; height: 120px;" src="<%= @album.music_embed %>" seamless><%= @album.name %> by <%= @artist.name %></iframe>
+        <iframe style="border: 0; width: 100%; height: 120px;" src="<%= @album.music_embed %>" seamless><%= @album.name %> by <%= @album.artist.name %></iframe>
       </div>
     </div>
   </div>
@@ -22,7 +22,13 @@
   <div class="col-md-4">
     <h4>by <a href="#"><%= @album.reviews[0].author() %></a></h4><br><br>
     <h4>Label: <%= @album.label %></h4><br>
-    <h4>Track List</h4><p class="well"></p><br>
+    <h4>Track List</h4>
+      <ol class="well">
+        <% @album.tracks.each do |track| %>
+          <li><%= track.name %></li>
+        <% end %>
+      </ol>
+    <br>
     <h4 class="well">Credits:<br><br>"<%= @album.credits %>"</h4>
   </div>
   <% else %>
@@ -31,24 +37,8 @@
   <div class="col-md-12">
     <h4><a href="/reviews">Back</a></h4>
   </div>
-</div>
 
 
-  <div class="col-sm-4 album_holder">
-    <div class="album_photo1" id="<%= @album.id %>">
-      <img class="img-responsive" src="<%= @album.album_photo_name %>" >
-    </div>
-    <a href="/albums/<%= @album.id %>"><h4><%= @album.name %></h4></a>
-  </div>
-
-  <div class="col-sm-4 tracks">
-    <h5><%= @album.label %></h5>
-    <ol>
-      <% @album.tracks.each do |track| %>
-        <li><%= track.name %></li>
-      <% end %>
-    </ol>
-  </div>
 
   <div class="col-sm-4">
     <% @album.comments.each() do |comment| %>
@@ -68,3 +58,5 @@
     </ul>
 
   </div>
+
+</div>
