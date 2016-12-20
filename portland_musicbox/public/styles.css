@@ -9,6 +9,7 @@ body {
 a,
 a:hover {
   text-decoration: none;
+  color: red;
 }
 
 
@@ -235,13 +236,37 @@ div.tracks ol {
   padding: 0 0 0 15px;
 }
 
+.album_name {
+  font-size: 50px;
+  font-style: italic;
+  font-weight: bold;
+}
+
 .album_photo {
+  width: 250px;
+  height: 250px;
+}
+
+.album_photo1 {
   width: 250px;
   height: 250px;
 }
 
 .album_photo:hover {
   cursor: pointer;
+}
+
+.album_photo1:hover {
+  cursor: pointer;
+}
+
+.well {
+  background-color: white;
+  border-color: red;
+}
+
+.page-header {
+  border-bottom-color: red;
 }
 
 .tracks {

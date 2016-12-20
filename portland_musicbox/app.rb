@@ -2,40 +2,41 @@ require("bundler/setup")
 Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
-
-get "/albums" do
-  erb :albums
-end
-
 get "/new_review" do
-  @user = User.where(current: true)
+  @user = User.find_by(current: true)
   @artists = Artist.all()
   @artist = nil
   erb :new_review
 end
 
 post "/new_review" do
-  @user = User.where(current: true)
+  @user = User.find_by(current: true)
   @artists = Artist.all()
   @artist = Artist.find(params.fetch("artist_id").to_i()) rescue nil
   erb :new_review
 end
 
-get "/reviews" do
+get "/albums" do
   @user = User.find_by(current: true)
   @reviews = Review.all()
   @artist = Artist.all()
-  erb :reviews
+  erb :albums
 end
 
 post "/reviews" do
-  @user = User.where(current: true)
+  @user = User.find_by(current: true)
   album_id = params.fetch("album_id").to_i()
   review_text = params.fetch("review_text")
   reviewer_name = params.fetch("reviewer_name")
   review = Review.create({:album_id => album_id, :author => reviewer_name, :text => review_text})
   @reviews = Review.all()
   erb :reviews
+end
+
+get "/albums/:id" do
+  @album = Album.find(params.fetch("id").to_i())
+  @artist = Artist.find(@album.artist_id.to_i())
+  erb :album
 end
 
 get '/' do
@@ -166,7 +167,6 @@ post '/save_image' do
 
   @filename = params[:file][:filename]
   file = params[:file][:tempfile]
-binding.pry
   File.open("./public/#{@filename}", 'wb') do |f|
     f.write(file.read)
   end
