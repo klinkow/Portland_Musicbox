@@ -17,7 +17,7 @@ post "/new_review" do
 end
 
 get "/reviews" do
-  @user = User.where(current: true)
+  @user = User.find_by(current: true)
   @reviews = Review.all()
   @artist = Artist.all()
   erb :reviews
