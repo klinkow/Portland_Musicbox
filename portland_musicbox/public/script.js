@@ -9,7 +9,6 @@ display_album = function(click, reveal) {
   $(click).click(function() {
     $(reveal).hide();
     $(this).fadeIn();
-    $(this)
     $('.tracks').slideDown(1000);
   });
 };
