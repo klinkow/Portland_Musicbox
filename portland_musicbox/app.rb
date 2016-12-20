@@ -43,9 +43,6 @@ get '/' do
   erb :index
 end
 
-get "/form_test" do
-  erb :form_test
-end
 
 get '/:login' do
   @user = User.find_by(current: true)
