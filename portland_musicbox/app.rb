@@ -53,7 +53,7 @@ post '/login/user' do
   if @user.password == params["pword"]
     @user.update(current: true)
     id = @user.id
-    @artist = Artist.find(id)
+    @artist = Artist.find_by(user_id: id)
     erb :user_dash
   else
     redirect to("/login")
