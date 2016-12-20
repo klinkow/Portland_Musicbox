@@ -2,6 +2,55 @@ require("bundler/setup")
 Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
+
+get "/albums" do
+  erb :albums
+end
+
+get "/tags/:id" do
+  @tag = Tag.find(params.fetch('id').to_i)
+  erb :tag_delete
+end
+
+delete "/albums/:id/tags" do
+  @album = Album.find(params.fetch('id').to_i)
+  current_tag = Tag.find(params.fetch('tag_id').to_i)
+  current_tag.delete()
+  erb :album_tags
+end
+
+get "/albums/:id" do
+  @album = Album.find(params.fetch('id').to_i)
+  @user = User.find_by(current: true)
+  erb :album
+end
+
+patch "/albums/:id" do
+  @album = Album.find(params.fetch('id').to_i)
+  comment_text = params.fetch('comment_text')
+  @user = User.find_by(current: true)
+  Comment.create({:text => comment_text, :album_id => @album.id})
+  erb :album
+end
+
+get "/albums/:id/tags" do
+  @album = Album.find(params.fetch('id').to_i)
+  erb :album_tags
+end
+
+post "/albums/:id/tags" do
+  @album = Album.find(params.fetch('id').to_i)
+  new_tag = params.fetch('new_tag')
+  Tag.create({:text => new_tag, :album_id => @album.id})
+  erb :album_tags
+end
+
+get "/albums/:id/new_comment" do
+  @album = Album.find(params.fetch('id').to_i)
+  @user = User.find_by(current: true)
+  erb :new_comment
+end
+
 get "/new_review" do
   @user = User.find_by(current: true)
   @artists = Artist.all()
@@ -114,7 +163,7 @@ end
 
 
 get '/:artist/new' do
-  @user = User.where(current: true)
+  @user = User.find_by(current: true)
   @form = params["user"]
   erb :entry_form
 end

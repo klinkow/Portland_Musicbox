@@ -4,5 +4,7 @@ class Album < ActiveRecord::Base
   has_many :merchandises
   has_many :formats, through: :merchandises
   has_many :reviews
+  has_many :comments
+  has_many :tags
   validates(:name, :presence => true)
 end
