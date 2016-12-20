@@ -11,13 +11,19 @@ a:hover {
   text-decoration: none;
 }
 
+
+.cover-row {
+  width: 100%;
+  overflow: hidden;
+
+}
+
 .cover {
-  height: 100vh;
+  height: 75vh;
   background-image: url("cover.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  margin: 0 15px;
-  padding: 15px;
+
 }
 
 .overlay-text-h1 {
