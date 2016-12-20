@@ -2,6 +2,11 @@ require("bundler/setup")
 Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
+
+get "/albums" do
+  erb :albums
+end
+
 get "/new_review" do
   @user = User.where(current: true)
   @artists = Artist.all()

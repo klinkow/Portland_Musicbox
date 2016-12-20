@@ -247,3 +247,14 @@ div.tracks ol {
 .tracks {
   display: none;
 }
+
+
+/* ------ ALBUMS STYLES ------ */
+
+div.albums-container {
+  margin-top: 25px;
+}
+
+div.albums-container .album_holder {
+  margin-bottom: 25px;
+}
