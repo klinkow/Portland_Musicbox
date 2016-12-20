@@ -19,7 +19,7 @@
     <div class="form-group">
       <label for="label">Label</label>
       <select name="label">
-        <option value = nil> No Label </option>
+        <option value=nil> No Label </option>
         <% Label.all.each do |label| %>
         <option value="<%= label.id %>"><%= label.name %></option>
         <% end %>

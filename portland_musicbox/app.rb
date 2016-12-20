@@ -17,7 +17,7 @@ post "/new_review" do
 end
 
 get "/reviews" do
-  @user = User.where(current: true)
+  @user = User.find_by(current: true)
   @reviews = Review.all()
   @artist = Artist.all()
   erb :reviews
@@ -50,7 +50,7 @@ end
 
 post '/login/user' do
   @user = User.find_by(username: params["login"])
-  if @user.password == params["pword"]
+  if @user != nil && @user.password == params["pword"]
     @user.update(current: true)
     id = @user.id
     @artist = Artist.find_by(user_id: id)
@@ -91,6 +91,11 @@ post "/album/new" do
     @album.tracks.push(new_track)
   end
   redirect("user/account/:id")
+end
+
+delete "/album/:id" do
+  Album.find(params[:id]).delete
+  redirect("/user/account/#{ params[:id]}")
 end
 
 
