@@ -88,7 +88,8 @@ end
 post "/album/new" do
   @user = User.find_by({:current => true})
   @artist = Artist.find_by(user_id: @user.id)
-  @artist.albums.push(Album.create(name: params['name'], credits: params["credits"], album_photo_name: params["album_art"], label: params['label']))
+  embed = params["embed"]
+  @artist.albums.push(Album.create(name: params['name'], credits: params["credits"], album_photo_name: params["album_art"], label: params['label'], music_embed: embed))
   @album = Album.find_by(:name => params["name"])
   tracks = params["tracks"]
   tracks.each do |t|

@@ -236,8 +236,8 @@ div.tracks ol {
 }
 
 .album_photo {
-  width: 250px;
-  height: 250px;
+  /*width: 250px;
+  height: 250px;*/
 }
 
 .album_photo:hover {
@@ -257,4 +257,13 @@ div.albums-container {
 
 div.albums-container .album_holder {
   margin-bottom: 25px;
+  padding: 0 20px 0 0;
+}
+
+/*div.albums-container .album_holder:first-child {
+  padding-left: 0;
+}*/
+
+div.col-sm-12 {
+  padding: 0;
 }
