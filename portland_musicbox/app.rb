@@ -7,6 +7,18 @@ get "/albums" do
   erb :albums
 end
 
+get "/tags/:id" do
+  @tag = Tag.find(params.fetch('id').to_i)
+  erb :tag_delete
+end
+
+delete "/albums/:id/tags" do
+  @album = Album.find(params.fetch('id').to_i)
+  current_tag = Tag.find(params.fetch('tag_id').to_i)
+  current_tag.delete()
+  erb :album_tags
+end
+
 get "/albums/:id" do
   @album = Album.find(params.fetch('id').to_i)
   @user = User.find_by(current: true)
@@ -19,6 +31,18 @@ patch "/albums/:id" do
   @user = User.find_by(current: true)
   Comment.create({:text => comment_text, :album_id => @album.id})
   erb :album
+end
+
+get "/albums/:id/tags" do
+  @album = Album.find(params.fetch('id').to_i)
+  erb :album_tags
+end
+
+post "/albums/:id/tags" do
+  @album = Album.find(params.fetch('id').to_i)
+  new_tag = params.fetch('new_tag')
+  Tag.create({:text => new_tag, :album_id => @album.id})
+  erb :album_tags
 end
 
 get "/albums/:id/new_comment" do
