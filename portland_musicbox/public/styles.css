@@ -236,8 +236,8 @@ div.tracks ol {
 }
 
 .album_photo {
-  width: 250px;
-  height: 250px;
+  /*width: 250px;
+  height: 250px;*/
 }
 
 .album_photo:hover {
@@ -246,6 +246,11 @@ div.tracks ol {
 
 .tracks {
   display: none;
+  padding: 10px;
+}
+
+ol {
+  padding: 10px;
 }
 
 
