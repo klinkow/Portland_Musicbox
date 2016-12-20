@@ -68,21 +68,21 @@ end
 
 get "/user/account/:id" do
   @user = User.find_by(current: true)
-  @artist = Artist.find(@user.id.to_i)
+  @user_id = @user.id.to_i
+  @artist = Artist.find_by(user_id: @user_id)
   erb :user_dash
 end
 
 get "/album/new" do
   @form = "album"
   @user = User.find_by({:current => true})
-  id = @user.id
-  @artist = Artist.find(id)
+  @artist = Artist.find_by(user_id: @user.id)
   erb :user_dash
 end
 
 post "/album/new" do
   @user = User.find_by({:current => true})
-  @artist = Artist.find(@user.id)
+  @artist = Artist.find_by(user_id: @user.id)
   @artist.albums.push(Album.create(name: params['name'], credits: params["credits"], album_photo_name: params["album_art"], label: params['label']))
   @album = Album.find_by(:name => params["name"])
   tracks = params["tracks"]

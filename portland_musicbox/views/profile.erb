@@ -4,13 +4,13 @@
       <img class="img-responsive" src="<%= album.album_photo_name %>" >
     </div>
     <h4><%= album.name %></h4>
-    <div class="tracks">
-      <h5><%= album.label %></h5>
-      <ol>
-        <% album.tracks.each do |track| %>
-          <li><%= track.name %></li>
-        <% end %>
-      </ol>
-    </div>
+  </div>
+  <div class="col-sm-4 tracks">
+    <h5><%= album.label %></h5>
+    <ol>
+      <% album.tracks.each do |track| %>
+        <li><%= track.name %></li>
+      <% end %>
+    </ol>
   </div>
 <% end %>

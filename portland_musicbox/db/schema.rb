@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20161219214312) do
     t.string  "credits"
     t.integer "artist_id"
     t.string  "label"
+    t.string  "format"
     t.string  "album_photo_name"
   end
 
