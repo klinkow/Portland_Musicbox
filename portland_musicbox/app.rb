@@ -89,10 +89,11 @@ post "/album/new" do
   @user = User.find_by({:current => true})
   @artist = Artist.find_by(user_id: @user.id)
   if params['new_label'] != ''
-    label_id = Label.create(name: params['new_label'], est_date: params['new_date'])
+    label_id = Label.create(name: params['new_label'], est_date: params['new_date']).id
   else
     label_id = Label.find(params['label']).id
   end
+  binding.pry
   @artist.albums.push(Album.create(name: params['name'], credits: params["credits"], album_photo_name: params["album_art"], label_id: label_id, music_embed: params["embed"]))
   @album = Album.find_by(:name => params["name"])
   tracks = params["tracks"]

@@ -5,8 +5,8 @@
       <h4><%= album.name %></h4>
     </div>
     <div class="col-md-4 tracks">
-      <% if album.label_id != 'nil' %>
-        <h5><a href="/label/<%= Label.find(album.label_id).id %>"><%= Label.find(album.label_id).name %></a></h5>
+      <% if album.label_id != nil %>
+        <h5><a href="/label/<%= album.label_id %>"><%= Label.find(album.label_id).name %></a></h5>
       <% end %>
       <ol>
         <% album.tracks.each do |track| %>
