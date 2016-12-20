@@ -9,6 +9,7 @@ body {
 a,
 a:hover {
   text-decoration: none;
+  color: red;
 }
 
 
@@ -235,7 +236,18 @@ div.tracks ol {
   padding: 0 0 0 15px;
 }
 
+.album_name {
+  font-size: 50px;
+  font-style: italic;
+  font-weight: bold;
+}
+
 .album_photo {
+  /*width: 250px;
+  height: 250px;*/
+}
+
+.album_photo1 {
   width: 250px;
   height: 250px;
 }
@@ -253,8 +265,22 @@ div.tracks ol {
   cursor: pointer;
 }
 
+.well {
+  background-color: white;
+  border-color: red;
+}
+
+.page-header {
+  border-bottom-color: red;
+}
+
 .tracks {
   display: none;
+  padding: 10px;
+}
+
+ol {
+  padding: 10px;
 }
 
 
@@ -266,4 +292,13 @@ div.albums-container {
 
 div.albums-container .album_holder {
   margin-bottom: 25px;
+  padding: 0 20px 0 0;
+}
+
+/*div.albums-container .album_holder:first-child {
+  padding-left: 0;
+}*/
+
+div.col-sm-12 {
+  padding: 0;
 }

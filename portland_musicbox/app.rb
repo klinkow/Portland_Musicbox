@@ -65,11 +65,11 @@ post "/new_review" do
   erb :new_review
 end
 
-get "/reviews" do
+get "/albums" do
   @user = User.find_by(current: true)
   @reviews = Review.all()
   @artist = Artist.all()
-  erb :reviews
+  erb :albums
 end
 
 post "/reviews" do
@@ -80,6 +80,12 @@ post "/reviews" do
   review = Review.create({:album_id => album_id, :author => reviewer_name, :text => review_text})
   @reviews = Review.all()
   erb :reviews
+end
+
+get "/albums/:id" do
+  @album = Album.find(params.fetch("id").to_i())
+  @artist = Artist.find(@album.artist_id.to_i())
+  erb :album
 end
 
 get '/' do
@@ -99,7 +105,7 @@ end
 
 post '/login/user' do
   @user = User.find_by(username: params["login"])
-  if @user.password == params["pword"]
+  if @user != nil && @user.password == params["pword"]
     @user.update(current: true)
     id = @user.id
     @artist = Artist.find_by(user_id: id)
@@ -132,7 +138,8 @@ end
 post "/album/new" do
   @user = User.find_by({:current => true})
   @artist = Artist.find_by(user_id: @user.id)
-  @artist.albums.push(Album.create(name: params['name'], credits: params["credits"], album_photo_name: params["album_art"], label: params['label']))
+  embed = params["embed"]
+  @artist.albums.push(Album.create(name: params['name'], credits: params["credits"], album_photo_name: params["album_art"], label: params['label'], music_embed: embed))
   @album = Album.find_by(:name => params["name"])
   tracks = params["tracks"]
   tracks.each do |t|
@@ -140,6 +147,11 @@ post "/album/new" do
     @album.tracks.push(new_track)
   end
   redirect("user/account/:id")
+end
+
+delete "/album/:id" do
+  Album.find(params[:id]).delete
+  redirect("/user/account/#{ params[:id]}")
 end
 
 
@@ -210,7 +222,6 @@ post '/save_image' do
 
   @filename = params[:file][:filename]
   file = params[:file][:tempfile]
-binding.pry
   File.open("./public/#{@filename}", 'wb') do |f|
     f.write(file.read)
   end
