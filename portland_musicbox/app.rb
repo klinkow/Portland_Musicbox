@@ -7,15 +7,35 @@ get "/albums" do
   erb :albums
 end
 
+get "/albums/:id" do
+  @album = Album.find(params.fetch('id').to_i)
+  @user = User.find_by(current: true)
+  erb :album
+end
+
+patch "/albums/:id" do
+  @album = Album.find(params.fetch('id').to_i)
+  comment_text = params.fetch('comment_text')
+  @user = User.find_by(current: true)
+  Comment.create({:text => comment_text, :album_id => @album.id})
+  erb :album
+end
+
+get "/albums/:id/new_comment" do
+  @album = Album.find(params.fetch('id').to_i)
+  @user = User.find_by(current: true)
+  erb :new_comment
+end
+
 get "/new_review" do
-  @user = User.where(current: true)
+  @user = User.find_by(current: true)
   @artists = Artist.all()
   @artist = nil
   erb :new_review
 end
 
 post "/new_review" do
-  @user = User.where(current: true)
+  @user = User.find_by(current: true)
   @artists = Artist.all()
   @artist = Artist.find(params.fetch("artist_id").to_i()) rescue nil
   erb :new_review
@@ -29,7 +49,7 @@ get "/reviews" do
 end
 
 post "/reviews" do
-  @user = User.where(current: true)
+  @user = User.find_by(current: true)
   album_id = params.fetch("album_id").to_i()
   review_text = params.fetch("review_text")
   reviewer_name = params.fetch("reviewer_name")
@@ -107,7 +127,7 @@ end
 
 
 get '/:artist/new' do
-  @user = User.where(current: true)
+  @user = User.find_by(current: true)
   @form = params["user"]
   erb :entry_form
 end

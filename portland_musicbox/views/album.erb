@@ -1,0 +1,29 @@
+<%= erb :header %>
+<div class="container albums-container">
+  <div class="col-sm-4 album_holder">
+    <div class="album_photo1" id="<%= @album.id %>">
+      <img class="img-responsive" src="<%= @album.album_photo_name %>" >
+    </div>
+    <a href="/albums/<%= @album.id %>"><h4><%= @album.name %></h4></a>
+  </div>
+
+  <div class="col-sm-4 tracks">
+    <h5><%= @album.label %></h5>
+    <ol>
+      <% @album.tracks.each do |track| %>
+        <li><%= track.name %></li>
+      <% end %>
+    </ol>
+  </div>
+
+  <div class="col-sm-4">
+    <% @album.comments.each() do |comment| %>
+    <p><%= comment.text() %></p>
+    <p>by -<%= User.find(comment.user_id()) rescue "anonymous" %>-</p>
+    <% end %>
+    <a href="/albums/<%= @album.id %>/new_comment"><button class="btn btn-danger">Add Comment</button></a>
+  </div>
+
+
+
+</div>
