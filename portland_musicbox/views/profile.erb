@@ -1,8 +1,16 @@
 <% @artist.albums.each do |album| %>
-<div class="col-sm-4 album_holder">
-  <div class="album_photo">
-    <a href="/album/<%= album.id %>"><img class="img-responsive" src="<%= album.album_photo_name %>" ></a>
+  <div class="col-sm-4 album_holder">
+    <div class="album_photo" id="<%= album.id %>">
+      <img class="img-responsive" src="<%= album.album_photo_name %>" >
+    </div>
+    <h4><%= album.name %></h4>
+    <div class="tracks">
+      <h5><%= album.label %></h5>
+      <ol>
+        <% album.tracks.each do |track| %>
+          <li><%= track.name %></li>
+        <% end %>
+      </ol>
+    </div>
   </div>
-  <h4><%= album.name %></h4>
-</div>
 <% end %>

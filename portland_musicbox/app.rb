@@ -67,8 +67,8 @@ get "/logout/:id" do
 end
 
 get "/user/account/:id" do
-  @user = User.find_by({:current => true})
-  @artist = Artist.find(@user.id)
+  @user = User.find_by(current: true)
+  @artist = Artist.find(@user.id.to_i)
   erb :user_dash
 end
 
@@ -83,7 +83,7 @@ end
 post "/album/new" do
   @user = User.find_by({:current => true})
   @artist = Artist.find(@user.id)
-  @artist.albums.push(Album.create(:name => params['name'], credits: params["credits"], album_photo_name: params["album_art"]))
+  @artist.albums.push(Album.create(name: params['name'], credits: params["credits"], album_photo_name: params["album_art"], label: params['label']))
   @album = Album.find_by(:name => params["name"])
   tracks = params["tracks"]
   tracks.each do |t|

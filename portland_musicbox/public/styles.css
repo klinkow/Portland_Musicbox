@@ -142,7 +142,19 @@ header.container {
   border-bottom: 2px solid red;
 }
 
+div.album_holder {
+  padding: 0;
+}
+
+div.tracks ol {
+  padding: 0 0 0 15px;
+}
+
 .album_photo {
   width: 250px;
   height: 250px;
+}
+
+.tracks {
+  display: none;
 }
