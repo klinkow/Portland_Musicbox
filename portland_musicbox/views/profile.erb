@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <% @artist.albums.each do |album| %>
 <div class="">
   <div class="col-sm-4 album_holder">
@@ -16,3 +17,31 @@
   </div>
 </div>  
 <% end %>
+=======
+<!-- <div class="row"> -->
+  <% @artist.albums.each do |album| %>
+    <div class="album_holder">
+      <div class="col-md-4 album_photo" id="<%= album.id %>">
+        <img class="img-responsive" src="<%= album.album_photo_name %>" >
+        <h4><%= album.name %></h4>
+      </div>
+      <div class="col-md-4 tracks">
+        <% if album.label != 'nil' %>
+          <h5><%= album.label %></h5>
+        <% end %>
+        <ol>
+          <% album.tracks.each do |track| %>
+            <li><%= track.name %></li>
+          <% end %>
+        </ol>
+      </div>
+      <div class="col-md-4 tracks">
+        <form action="/album/<%= album.id %> " method="post">
+          <input type="hidden" name="_method" value="delete">
+          <button type="submit" class="btn btn-danger">Delete Album</button>
+        </form>
+      </div>
+    </div>
+  <% end %>
+<!-- </div> -->
+>>>>>>> 4cdc3585b4f815673f1b42810f5a45c3316ee364

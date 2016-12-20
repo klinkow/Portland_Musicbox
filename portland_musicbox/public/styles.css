@@ -246,6 +246,11 @@ div.tracks ol {
 
 .tracks {
   display: none;
+  padding: 10px;
+}
+
+ol {
+  padding: 10px;
 }
 
 
