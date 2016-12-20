@@ -1,13 +1,15 @@
 <%= erb :header %>
+
 <div class="container albums-container">
-  <div class="col-sm-12">
-    <% Album.all.each do |album| %>
-      <div class="col-sm-4 album_holder">
-        <div class="album_photo" id="<%= album.id %>">
-          <img class="img-responsive" src="<%= album.album_photo_name %>" >
-        </div>
-        <h4><%= album.name %></h4>
+
+  <% Album.all.each do |album| %>
+    <div class="col-sm-4 album_holder">
+      <div class="album_photo1" id="<%= album.id %>">
+        <a href="/albums/<%= album.id() %>"><img class="img-responsive" src="<%= album.album_photo_name %>"></a>
       </div>
-    <% end %>
-  </div>
+      <a href=""><h3><%= album.artist.name() %></h3></a>
+      <a href="/reviews/<%= album.id() %>"><h4><%= album.name %></h4></a>
+    </div>
+  <% end %>
+
 </div>
