@@ -2,8 +2,8 @@
 <br>
 <div class="container">
   <ul class="nav nav-pills">
-    <% @tag_array.each() do |tag| %>
-    <li role="presentation"><a href="#"><%= tag %></a></li>
+    <% @tag_array.each do |tag| %>
+    <li role="presentation"><a href="/tags/<%= tag %>"><%= tag %></a></li>
     <% end %>
   </ul>
 </div>
