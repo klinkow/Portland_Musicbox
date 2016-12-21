@@ -17,12 +17,18 @@
     </div>
   </div>
   <% if @album.reviews.any?() %>
-  <div class="col-md-8">
-    <h4><%= @album.reviews[0].text() %></h4>
-  </div>
-  <div class="col-md-4">
+    <div class="col-md-8">
+      <h4><%= @album.reviews[0].text() %></h4>
+    </div>
     <h4>by <a href="#"><%= @album.reviews[0].author() %></a></h4><br><br>
-    <h4>Label: <%= @album.label %></h4><br>
+    <% if @user.username == "admin" %>
+      <a href="/new_review"><button class="btn btn-danger">Add Review</button></a>
+    <% end %>
+  <% else %>
+    <h2>There is no review for this album yet!</h2>
+  <% end %>
+  <div class="col-md-4">
+    <h4>Label: <%= @album.label.name %></h4><br>
     <h4>Track List</h4>
       <ol class="well">
         <% @album.tracks.each do |track| %>
@@ -40,16 +46,10 @@
     </ul>
 
   </div>
-  <% else %>
-  <h2>There is no review for this album yet!</h2>
-  <% end %>
   <div class="col-md-12">
     <h4><a href="/reviews">Back</a></h4>
   </div>
 
-  <% if @user.username == "admin" %>
-    <a href="/new_review"><button class="btn btn-danger">Add Review</button></a>
-  <% end %>
 
   <div class="col-sm-8">
     <% @album.comments.each() do |comment| %>
@@ -60,7 +60,5 @@
     <% end %>
     <a href="/albums/<%= @album.id %>/new_comment"><button class="btn btn-danger">Add Comment</button></a>
   </div>
-
-
 
 </div>
