@@ -9,6 +9,11 @@ body {
 a,
 a:hover {
   text-decoration: none;
+  color: black;
+}
+
+a {
+  color: red;
 }
 
 
@@ -169,9 +174,9 @@ header.container ul {
   padding: 0;
   margin: 0;
   position: relative;
-  top: -31px;
+  top: 32px;
+  right: 10px;
 }
-
 header.container ul li {
   display: inline-block;
 }
@@ -192,6 +197,7 @@ header.container {
   border-bottom: 1px solid red;
   padding: 0;
   height: 55px;
+  margin-bottom: 25px;
 }
 
 /* ------ USER ARTIST DASHBOARD STYLES ------ */
@@ -271,4 +277,44 @@ div.albums-container .album_holder {
 
 div.col-sm-12 {
   padding: 0;
+}
+
+/* ------ ARTIST PROFILE STYLES ------ */
+
+.artist_profile_back {
+  background-color: black;
+  background-image: url('http://icons.iconarchive.com/icons/martz90/circle/512/camera-icon.png');
+  background-size: 100px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+img.empty {
+  height: 300px;
+  width: 300px;
+}
+
+
+
+.profile_photo {
+  z-index: 100;
+}
+
+div.col-sm-4 {
+  padding: 0;
+  overflow: hidden;
+}
+
+.update-col {
+  margin: 0 15px;
+}
+
+/* ------ ARTISTS STYLES ------ */
+
+.artist_container {
+  margin: 0 15px 0 0;
+}
+
+div.artist_col {
+  padding: 0 25px;
 }

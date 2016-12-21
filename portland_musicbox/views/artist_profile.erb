@@ -1,0 +1,21 @@
+
+  <div class="col-sm-4">
+    <% if @artist.profile_photo != '' %>
+      <img class="profile_photo img-responsive" src="<%= @artist.profile_photo %>" alt="Profile Photo">
+    <%else%>
+      <img class="empty artist_profile_back">
+    <% end %>
+  </div>
+  <div class="col-sm-4 update-col">
+    <form action="/artist/profile" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <input type="hidden" name="artist_id" value="<%= @artist.id %>">
+      <div class="form-group">
+        <input class="form-control" type="text" name="profile" placeholder="PHOTO URL">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text" name="new_name" placeholder="NEW COOLER BAND NAME">
+      </div>
+      <button type="submit" class="btn btn-danger">SAVE UPDATES</button>
+    </form>
+  </div>

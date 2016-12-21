@@ -1,0 +1,13 @@
+<%= erb :header %>
+
+<div class="container">
+  <div class="col-sm-12">
+    <div class="col-sm-4 artist_col">
+      <h2><%= @artist.name %></h2>
+      <img class="img-responsive" src="<%= @artist.profile_photo %>">
+    </div>
+    <div class="col-sm-4">
+      <h2>BIO</h2>
+    </div>
+  </div>
+</div>

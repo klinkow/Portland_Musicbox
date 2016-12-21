@@ -4,7 +4,13 @@ Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 
 get "/albums" do
+  @user = User.find_by(current: true)
   erb :albums
+end
+
+get "/artists" do
+  @user = User.find_by(current: true)
+  erb :artists
 end
 
 get "/new_review" do
@@ -42,7 +48,6 @@ get '/' do
   @user = User.find_by(current: true)
   erb :index
 end
-
 
 get '/:login' do
   @user = User.find_by(current: true)
@@ -101,6 +106,26 @@ delete "/album/:id" do
   redirect("/user/account/#{ params[:id]}")
 end
 
+get '/artist/profile' do
+  @form = "artist"
+  @user = User.find_by(current: true)
+  @artist = Artist.find_by(user_id: @user.id)
+  erb :user_dash
+end
+
+patch '/artist/profile' do
+  @artist = Artist.find(params["artist_id"])
+  photo = params["profile"]
+  if params["profile"] == ""
+    photo = @artist.profile_photo
+  end
+  bandname = params["new_name"]
+  if params["new_name"] == ""
+    bandname = @artist.name
+  end
+  @artist.update(name: bandname, profile_photo: photo)
+  redirect("/artist/profile")
+end
 
 get '/:user/new' do
   @user = User.find_by({:current => true})
@@ -108,6 +133,11 @@ get '/:user/new' do
   erb :entry_form
 end
 
+get "/artists/:id" do
+  @artist = Artist.find(params["id"].to_i)
+  @user = User.find_by(current: true)
+  erb :artist
+end
 
 get '/:artist/new' do
   @user = User.where(current: true)
@@ -159,20 +189,4 @@ post "/user/new" do
   else
     erb :error
   end
-end
-
-get "/form_test" do
-  erb :form_test
-end
-
-post '/save_image' do
-
-  @filename = params[:file][:filename]
-  file = params[:file][:tempfile]
-binding.pry
-  File.open("./public/#{@filename}", 'wb') do |f|
-    f.write(file.read)
-  end
-
-  erb :show_image
 end
