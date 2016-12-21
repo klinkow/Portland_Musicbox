@@ -78,6 +78,11 @@ get "/albums/:id/new_comment" do
   erb :new_comment
 end
 
+get "/labels" do
+  @user = User.find_by(current: true)
+  erb :labels
+end
+
 get "/label/:id" do
   @user = User.find_by(current: true)
   @label = Label.find(params['id'])
@@ -172,7 +177,6 @@ post "/album/new" do
   else
     label_id = Label.find(params['label']).id
   end
-  binding.pry
   @artist.albums.push(Album.create(name: params['name'], credits: params["credits"], album_photo_name: params["album_art"], label_id: label_id, music_embed: params["embed"]))
   @album = Album.find_by(:name => params["name"])
   tracks = params["tracks"]
