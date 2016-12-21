@@ -115,12 +115,10 @@ ul#log_in_ul {
   padding: 0;
   display: inline-block;
   position: relative;
-  top: -10px;
 }
 
 ul#log_in_ul li {
   display: inline-block;
-  float: left;
   padding: 0;
 }
 
@@ -143,19 +141,32 @@ ul#log_in_ul li a:active {
 ul#create_account_ul {
   display: inline-block;
   position: relative;
-  right: -627px;
+  left: 620px;
   top: 10px;
+}
+
+ul#cart_ul {
+  display: inline-block;
+  float: right;
+  position: relative;
+  top: 7px;
+}
+
+ul#cart_ul li.cart a {
+  position: relative;
+  color:red;
+  font-weight: bold;
+  /*left: 368px;*/
 }
 
 
 ul#create_account_ul li {
   display: inline-block;
-  float: right;
   padding: 0;
   height: 30px;
 }
 
-ul#create_account_ul li:nth-child(n+2) {
+ul#create_account_ul li:nth-child(n+1) {
   padding-right: 20px;
   margin-right: 20px;
 }

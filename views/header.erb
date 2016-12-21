@@ -9,9 +9,12 @@
       <% end %>
     </ul>
 
+    <ul id="cart_ul">
+      <li class="cart"><a>CART: 0</a></li>
+    </ul>
+
 
     <ul id="create_account_ul">
-      <li><a>Cart: 0</a></li>
       <% if @user == nil %>
         <li><a href="/artist/new">CREATE ARTIST ACCOUNT</a></li>
         <li><a href="/user/new">CREATE USER ACCOUNT</a></li>
