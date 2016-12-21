@@ -23,6 +23,17 @@ get "/tags" do
   erb :tags
 end
 
+get "/store" do
+  @user = User.find_by(current: true)
+  erb :store
+end
+
+get "/merchandise/new" do
+  @user = User.find_by(current: true)
+  @artist = Artist.find_by(user_id: @user.id)
+  erb :user_dash
+end
+
 get "/tags/:id" do
   @tag = Tag.find(params.fetch('id').to_i)
   erb :tag_delete
@@ -166,7 +177,6 @@ post "/album/new" do
   else
     label_id = Label.find(params['label']).id
   end
-  binding.pry
   @artist.albums.push(Album.create(name: params['name'], credits: params["credits"], album_photo_name: params["album_art"], label_id: label_id, music_embed: params["embed"]))
   @album = Album.find_by(:name => params["name"])
   tracks = params["tracks"]
