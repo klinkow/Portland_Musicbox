@@ -22,7 +22,6 @@ end
 get "/albums/:id" do
   @album = Album.find(params.fetch('id').to_i)
   @user = User.find_by(current: true)
-  binding.pry
   erb :album
 end
 

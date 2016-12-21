@@ -30,6 +30,14 @@
       </ol>
     <br>
     <h4 class="well">Credits:<br><br>"<%= @album.credits %>"</h4>
+
+    <ul class="nav nav-pills">
+      <% @album.tags.each() do |tag| %>
+      <li role="presentation"><a href="#"><%= tag.text() %></a></li>
+      <% end %>
+      <a href="/albums/<%= @album.id %>/tags"><button class="btn btn-danger">Manage Tags</button></a>
+    </ul>
+
   </div>
   <% else %>
   <h2>There is no review for this album yet!</h2>
@@ -40,23 +48,16 @@
 
 
 
-  <div class="col-sm-4">
+  <div class="col-sm-8">
     <% @album.comments.each() do |comment| %>
-    <p><%= comment.text() %></p>
-    <p>by -<%= User.find(comment.user_id()) rescue "anonymous" %>-</p>
+    <div class="well">
+      <p><%= comment.text() %></p>
+      <p>by -<%= User.find(comment.user_id()) rescue "anonymous" %>-</p>
+    </div>
     <% end %>
     <a href="/albums/<%= @album.id %>/new_comment"><button class="btn btn-danger">Add Comment</button></a>
   </div>
 
-  <div class="col-sm-12">
 
-    <ul class="nav nav-pills">
-      <% @album.tags.each() do |tag| %>
-      <li role="presentation"><a href="#"><%= tag.text() %></a></li>
-      <% end %>
-      <a href="/albums/<%= @album.id %>/tags"><button class="btn btn-danger">Manage Tags</button></a>
-    </ul>
-
-  </div>
 
 </div>
