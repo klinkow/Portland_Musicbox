@@ -67,6 +67,11 @@ get "/albums/:id/new_comment" do
   erb :new_comment
 end
 
+get "/labels" do
+  @user = User.find_by(current: true)
+  erb :labels
+end
+
 get "/label/:id" do
   @user = User.find_by(current: true)
   @label = Label.find(params['id'])
