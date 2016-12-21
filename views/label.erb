@@ -8,12 +8,13 @@
           <div class="album_photo" id="<%= album.id %>">
             <img class="img-responsive" src="<%= album.album_photo_name %>" >
           </div>
-          <h4><%= album.name %></h4>
+          <h2><%= album.name %></h4>
+          <h4><%= album.artist.name %></h2>
         </div>
-        <div class="col-md-4 tracks">
+        <div class="tracks">
           <ol>
             <% album.tracks.each do |track| %>
-              <li><%= track.name %></li>
+              <li><%= track.name %>, <span class="track_length"><%= track.track_length %></span></li>
             <% end %>
           </ol>
           <a href="/label/<%= @label.id %>">Show All Albums</a>

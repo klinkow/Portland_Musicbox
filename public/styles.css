@@ -341,9 +341,13 @@ div.col-sm-4 {
 /* ------ ARTISTS STYLES ------ */
 
 .artist_container {
-  margin: 0 15px 0 0;
+  padding: 0 15px 0 0;
 }
 
 div.artist_col {
   padding: 0 25px;
+}
+
+.track_length {
+  float: right;
 }
