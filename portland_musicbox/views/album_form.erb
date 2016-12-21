@@ -24,10 +24,13 @@
       <select name="label">
         <option value=nil> No Label </option>
         <% Label.all.each do |label| %>
-        <option value="<%= label.id %>"><%= label.name %></option>
+        <option value='<%= label.id %>'><%= label.name %></option>
         <% end %>
       </select>
-      <input name="new_label">
+      <label for="new_label">or</label>
+      <input name="new_label" placeholder="Add New Label">
+      <label for="new_date">Established in:</label>
+      <input type="number" name="new_date" placeholder="(Year)">
   </div>
   <button class="btn btn-danger" type="submit">Add Album</button>
 </form>

@@ -7,4 +7,5 @@ class Album < ActiveRecord::Base
   has_many :comments
   has_many :tags
   validates(:name, :presence => true)
+  validates(:name, :uniqueness => true)
 end

@@ -8,11 +8,10 @@ get "/albums" do
   erb :albums
 end
 
-
 get "/artists" do
   @user = User.find_by(current: true)
   erb :artists
-end 
+end
 
 get "/tags" do
   @tag_array = []
@@ -66,6 +65,11 @@ get "/albums/:id/new_comment" do
   @album = Album.find(params.fetch('id').to_i)
   @user = User.find_by(current: true)
   erb :new_comment
+
+get "/label/:id" do
+  @user = User.find_by(current: true)
+  @label = Label.find(params['id'])
+  erb :label
 end
 
 get "/new_review" do
@@ -151,8 +155,13 @@ end
 post "/album/new" do
   @user = User.find_by({:current => true})
   @artist = Artist.find_by(user_id: @user.id)
-  embed = params["embed"]
-  @artist.albums.push(Album.create(name: params['name'], credits: params["credits"], album_photo_name: params["album_art"], label: params['label'], music_embed: embed))
+  if params['new_label'] != ''
+    label_id = Label.create(name: params['new_label'], est_date: params['new_date']).id
+  else
+    label_id = Label.find(params['label']).id
+  end
+  binding.pry
+  @artist.albums.push(Album.create(name: params['name'], credits: params["credits"], album_photo_name: params["album_art"], label_id: label_id, music_embed: params["embed"]))
   @album = Album.find_by(:name => params["name"])
   tracks = params["tracks"]
   tracks.each do |t|
