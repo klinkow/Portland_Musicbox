@@ -3,7 +3,7 @@
   <h3>Editing <%= @album.name %> Tags:</h3>
   <ul class="nav nav-pills">
     <% @album.tags.each() do |tag| %>
-    <li><a href="/tags/<%= tag.id %>">Remove <%= tag.text() %></a>
+    <li><a href="/tags/<%= tag.id %>">Remove <%= tag.text() %></a></li>
     <% end %>
   </ul>
   <br>

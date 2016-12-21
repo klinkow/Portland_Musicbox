@@ -7,6 +7,16 @@ get "/albums" do
   erb :albums
 end
 
+get "/tags" do
+  @tag_array = []
+  tags = Tag.all()
+  tags.each() do |tag|
+    @tag_array.push(tag.text())
+  end
+  @tag_array = @tag_array.uniq()
+  erb :tags
+end
+
 get "/tags/:id" do
   @tag = Tag.find(params.fetch('id').to_i)
   erb :tag_delete
