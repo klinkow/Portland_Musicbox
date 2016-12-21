@@ -51,7 +51,6 @@ end
 artist4_id = @artist4.id
 Album.create(name: "In Summer", credits: "Jefre Cantu-Ledesma has described his latest work, a five-track cassette release called In Summer, as a “catalogue of photographs.” The songs are meant as snapshots of people, places, and interests he developed in 2015. It’s not an unusual thing to say about your music;  there are ways in which songs can crystallize a memory better than a photograph. Cantu-Ledesma’s work is wordless, often rhythmless, making it a strange vehicle for visuals, but In Summer somehow lives up it’s visual description, and it is possibly one of the most pastoral and emotionally evocative pieces of noise music that’s been released this year.", artist_id: artist4_id, label_id: Label.find_by(name: 'Geographic North').id, album_photo_name: "https://f4.bcbits.com/img/a3365961670_10.jpg")
 
-
 @artist5 = Artist.create(name: "Captain Beefheart", profile_photo: "http://img.wennermedia.com/social/rs-143557-rectangle.jpg")
 artist5_id = @artist5.id
 
@@ -84,7 +83,6 @@ troutmask.tracks.create({:name => "Neon Meate Dream of a Octafish", :track_numbe
 troutmask.comments.create(text: "It if sometimes furnished unwilling as additions so. Blessing resolved peculiar fat graceful ham. Sussex on at really ladies in as elinor. Sir sex opinions age properly extended. Advice branch vanity or do thirty living. Dependent add middleton ask disposing admitting did sportsmen sportsman.
 
 Turned it up should no valley cousin he. Speaking numerous ask did horrible packages set. Ashamed herself has distant can studied mrs. Led therefore its middleton perpetual fulfilled provision frankness. Small he drawn after among every three no. All having but you edward genius though remark one")
-
 
 @artist6 = Artist.create(profile_photo: 'http://glacialpace.com/wp-content/uploads/2014/02/benmoon_140206_mimickingbirds_121.jpg', name: "Mimicking Birds")
 artist6_id = @artist6.id

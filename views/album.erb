@@ -46,13 +46,10 @@
     <h4><a href="/albums">Back</a></h4>
   </div>
 
-<<<<<<< HEAD
-=======
   <% if @user.username == "admin" %>
     <a href="/new_review"><button class="btn btn-danger">Add Review</button></a>
   <% end %>
 
->>>>>>> 96cdc9abc5e075431c8cbb9c20ed1a51724050a8
   <div class="col-sm-8">
     <% @album.comments.each do |comment| %>
     <div class="well">
