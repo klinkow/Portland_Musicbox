@@ -7,6 +7,12 @@ get "/albums" do
   erb :albums
 end
 
+get "/label/:id" do
+  @user = User.find_by(current: true)
+  @label = Label.find(params['id'])
+  erb :label
+end
+
 get "/new_review" do
   @user = User.where(current: true)
   @artists = Artist.all()

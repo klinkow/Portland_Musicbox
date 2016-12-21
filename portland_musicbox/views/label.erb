@@ -1,0 +1,24 @@
+<%= erb :header %>
+<div class="container albums-container">
+  <h2>Releases from <%= @label.name %>:</h2>
+  <div class="row">
+    <% Album.where(label_id: @label.id).each do |album| %>
+      <div class="col-md-4 album_holder">
+        <div>
+          <div class="album_photo" id="<%= album.id %>">
+            <img class="img-responsive" src="<%= album.album_photo_name %>" >
+          </div>
+          <h4><%= album.name %></h4>
+        </div>
+        <div class="col-md-4 tracks">
+          <ol>
+            <% album.tracks.each do |track| %>
+              <li><%= track.name %></li>
+            <% end %>
+          </ol>
+          <a href="/label/<%= @label.id %>">Show All Albums</a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

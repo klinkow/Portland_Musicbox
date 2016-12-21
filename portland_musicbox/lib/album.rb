@@ -5,4 +5,5 @@ class Album < ActiveRecord::Base
   has_many :formats, through: :merchandises
   has_many :reviews
   validates(:name, :presence => true)
+  validates(:name, :uniqueness => true)
 end
