@@ -1,22 +1,10 @@
-<<<<<<< HEAD
-require '/Users/Huckleberry/Desktop/portland_musicbox/lib/label.rb'
-require("/Users/Huckleberry/Desktop/portland_musicbox/lib/artist.rb")
-require("/Users/Huckleberry/Desktop/portland_musicbox/lib/album.rb")
-require("/Users/Huckleberry/Desktop/portland_musicbox/lib/review.rb")
-require("/Users/Huckleberry/Desktop/portland_musicbox/lib/tag.rb")
-require("/Users/Huckleberry/Desktop/portland_musicbox/lib/track.rb")
-=======
-
-
-require("/home/elemental/Documents/portland_musicbox/lib/artist.rb")
-require("/home/elemental/Documents/portland_musicbox/lib/album.rb")
-require("/home/elemental/Documents/portland_musicbox/lib/track.rb")
-require("/home/elemental/Documents/portland_musicbox/lib/tag.rb")
-require("/home/elemental/Documents/portland_musicbox/lib/review.rb")
-require("/home/elemental/Documents/portland_musicbox/lib/comment.rb")
-require("/home/elemental/Documents/portland_musicbox/lib/label.rb")
-
->>>>>>> 761973f5061e1a85139dd648e91a01b8a8c57bb8
+require("/Users/Guest/Desktop/portland_musicbox/lib/album.rb")
+require("/Users/Guest/Desktop/portland_musicbox/lib/artist.rb")
+require("/Users/Guest/Desktop/portland_musicbox/lib/comment.rb")
+require("/Users/Guest/Desktop/portland_musicbox/lib/label.rb")
+require("/Users/Guest/Desktop/portland_musicbox/lib/review.rb")
+require("/Users/Guest/Desktop/portland_musicbox/lib/tag.rb")
+require("/Users/Guest/Desktop/portland_musicbox/lib/track.rb")
 
 
 labels = ['Kill Rock Stars', 'Tender Loving Empire', 'Good Cheer', 'Golden Brown', 'Virgin', 'Dischord', 'GOOD Music', 'Geographic North', 'Straight', 'Glacial Pace']
@@ -26,9 +14,9 @@ labels.each do |label|
 end
 
 
-@artist1 = Artist.create(name: "The Smashing Pumpkins")
+@artist1 = Artist.create(name: "The Smashing Pumpkins", profile_photo: "https://s-media-cache-ak0.pinimg.com/originals/2b/6e/d3/2b6ed3c7887a6af8908fd48e61b3f851.jpg")
 artist1_id = @artist1.id
-album_id = Album.create(name: "Siamese Dream", credits: "Siamese Dream is the second studio album by the American alternative rock band The Smashing Pumpkins, released on July 27, 1993 on Virgin Records. The album fused diverse influences such as shoegazing, dream pop, heavy metal and progressive rock", artist_id: artist1_id, label_id: Label.find_by(name: "Virgin").id, album_photo_name: "https://hackskeptic.files.wordpress.com/2014/08/siamese.jpg")
+album_id = Album.create(name: "Siamese Dream", credits: "Siamese Dream is the second studio album by the American alternative rock band The Smashing Pumpkins, released on July 27, 1993 on Virgin Records. The album fused diverse influences such as shoegazing, dream pop, heavy metal and progressive rock", artist_id: artist1_id, label_id: Label.find_by(name: "Virgin").id, music_embed: "https://bandcamp.com/EmbeddedPlayer/album=1491365032/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=none/track=1741442397/transparent=true/", album_photo_name: "https://hackskeptic.files.wordpress.com/2014/08/siamese.jpg")
 Review.create(album_id: album_id.id, author: "Ned Raggett", text: "It's sometimes easy to forget why Billy Corgan is famous, but these reissues of Smashing Pumpkins' first two albums underscore what made them so vital at the dawn of the 90s and why their influence is still felt today.")
 Tag.create(album_id: album_id.id, text: "Rock")
 tracks = ["Cherub Rock", "Quiet", "Today", "Hummer", "Rocket", "Disarm", "Soma", 	"Geek U.S.A.", "Mayonaise", "Spaceboy", "Silverfuck", "Sweet Sweet", "Luna"]
@@ -49,9 +37,9 @@ tracks.each do |track|
   album_id.tracks.create(name: track, track_number: (tracks.index(track)+1), album_id:album_id.id, artist_id: artist2_id, track_length: length[tracks.index(track)])
 end
 
-@artist3 = Artist.create(name: "Pusha T")
+@artist3 = Artist.create(name: "Pusha T", profile_photo: "https://pbs.twimg.com/profile_images/674338781185593344/FcK_WQ1U.jpg")
 artist3_id = @artist3.id
-album_id = Album.create(name: "Darkest Before The Dawn", credits: "King Push – Darkest Before Dawn: The Prelude is the second studio album by American hip hop recording artist Pusha T. It was released on December 18, 2015, by GOOD Music and Def Jam Recordings.", artist_id: artist3_id, label_id: Label.find_by(name: "GOOD Music").id, album_photo_name: "https://images.rapgenius.com/3f72d8c2430990e8114a93b62c425f88.1000x1000x1.jpg")
+album_id = Album.create(name: "Darkest Before The Dawn", credits: "King Push – Darkest Before Dawn: The Prelude is the second studio album by American hip hop recording artist Pusha T. It was released on December 18, 2015, by GOOD Music and Def Jam Recordings.", artist_id: artist3_id, label_id: Label.find_by(name: "GOOD Music").id, music_embed: "http://bandcamp.com/EmbeddedPlayer/album=2624352611/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=none/transparent=true/", album_photo_name: "https://images.rapgenius.com/3f72d8c2430990e8114a93b62c425f88.1000x1000x1.jpg")
 Review.create(album_id: album_id.id, author: "Craig Jenkins", text: "Pusha T's sophomore studio album is an exercise in pure craft for everyone involved. The beats sound like money, and the raps are whip smart and cleanly tailored; imagine Tony Montana slipping out of the country scot-free ahead of his career-ending Scarface raid, and you arrive at the cocktail of spite and incredulity fueling Darkest Before Dawn.")
 Tag.create(album_id: album_id.id, text: "Rap")
 tracks = ["Intro", "Untouchable", "M.F.T.R. (featuring The-Dream)", "Crutches, Crosses, Caskets", "M.P.A. (featuring Kanye West, A$AP Rocky and The-Dream)", "Got Em Covered (featuring Ab-Liva)", "Keep Dealing (featuring Beanie Sigel)", 	"Retribution (featuring Kehlani)", 	"F.I.F.A.", "Sunshine (featuring Jill Scott)"]
