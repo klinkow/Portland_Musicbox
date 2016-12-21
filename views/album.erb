@@ -11,6 +11,7 @@
       <div class="col-sm-8">
         <h3><%= @album.artist.name %></h3>
         <h1 class="album_name"><%= @album.name %></h1>
+        <h5><a href="/label/<%= @album.label_id %>"><%= Label.find(@album.label_id).name %></a></h5>
         <iframe style="border: 0; width: 100%; height: 120px;" src="<%= @album.music_embed %>" seamless><%= @album.name %> by <%= @album.artist.name %></iframe>
       </div>
     </div>
@@ -46,7 +47,9 @@
     <h4><a href="/reviews">Back</a></h4>
   </div>
 
-
+  <% if @user.username == "admin" %>
+    <a href="/new_review"><button class="btn btn-danger">Add Review</button></a>
+  <% end %>
 
   <div class="col-sm-8">
     <% @album.comments.each() do |comment| %>

@@ -1,1 +1,14 @@
 <%= erb :header %>
+
+<div class="container labels-container">
+
+  <% Label.all.each do |label| %>
+    <div class="col-sm-4 label_holder">
+
+      <a href="/label/<%= label.id %>"><h3><%= label.name() %></h3></a>
+      <h4>Established <%= label.est_date %></h4>
+
+    </div>
+  <% end %>
+
+</div>
