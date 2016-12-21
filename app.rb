@@ -23,6 +23,17 @@ get "/tags" do
   erb :tags
 end
 
+get "/store" do
+  @user = User.find_by(current: true)
+  erb :store
+end
+
+get "/merchandise/new" do
+  @user = User.find_by(current: true)
+  @artist = Artist.find_by(user_id: @user.id)
+  erb :user_dash
+end
+
 get "/tags/:id" do
   @tag = Tag.find(params.fetch('id').to_i)
   erb :tag_delete
