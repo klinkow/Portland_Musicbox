@@ -1,6 +1,7 @@
-require '/Users/Guest/Desktop/portland_musicbox/lib/label.rb'
 require("/Users/Guest/Desktop/portland_musicbox/lib/artist.rb")
 require("/Users/Guest/Desktop/portland_musicbox/lib/album.rb")
+require('/Users/Guest/Desktop/portland_musicbox/lib/label.rb')
+require("/Users/Guest/Desktop/portland_musicbox/lib/comment.rb")
 require("/Users/Guest/Desktop/portland_musicbox/lib/review.rb")
 require("/Users/Guest/Desktop/portland_musicbox/lib/tag.rb")
 require("/Users/Guest/Desktop/portland_musicbox/lib/track.rb")
@@ -13,7 +14,7 @@ labels.each do |label|
 end
 
 
-@artist1 = Artist.create(name: "The Smashing Pumpkins")
+@artist1 = Artist.create(name: "The Smashing Pumpkins", profile_photo: "https://s-media-cache-ak0.pinimg.com/originals/2b/6e/d3/2b6ed3c7887a6af8908fd48e61b3f851.jpg")
 artist1_id = @artist1.id
 album_id = Album.create(name: "Siamese Dream", credits: "Siamese Dream is the second studio album by the American alternative rock band The Smashing Pumpkins, released on July 27, 1993 on Virgin Records. The album fused diverse influences such as shoegazing, dream pop, heavy metal and progressive rock", artist_id: artist1_id, label_id: Label.find_by(name: "Virgin").id, album_photo_name: "https://hackskeptic.files.wordpress.com/2014/08/siamese.jpg")
 Review.create(album_id: album_id.id, author: "Ned Raggett", text: "It's sometimes easy to forget why Billy Corgan is famous, but these reissues of Smashing Pumpkins' first two albums underscore what made them so vital at the dawn of the 90s and why their influence is still felt today.")
@@ -36,7 +37,7 @@ tracks.each do |track|
   album_id.tracks.create(name: track, track_number: (tracks.index(track)+1), album_id:album_id.id, artist_id: artist2_id, track_length: length[tracks.index(track)])
 end
 
-@artist3 = Artist.create(name: "Pusha T")
+@artist3 = Artist.create(name: "Pusha T", profile_photo: "https://pbs.twimg.com/profile_images/674338781185593344/FcK_WQ1U.jpg")
 artist3_id = @artist3.id
 album_id = Album.create(name: "Darkest Before The Dawn", credits: "King Push – Darkest Before Dawn: The Prelude is the second studio album by American hip hop recording artist Pusha T. It was released on December 18, 2015, by GOOD Music and Def Jam Recordings.", artist_id: artist3_id, label_id: Label.find_by(name: "GOOD Music").id, album_photo_name: "https://images.rapgenius.com/3f72d8c2430990e8114a93b62c425f88.1000x1000x1.jpg")
 Review.create(album_id: album_id.id, author: "Craig Jenkins", text: "Pusha T's sophomore studio album is an exercise in pure craft for everyone involved. The beats sound like money, and the raps are whip smart and cleanly tailored; imagine Tony Montana slipping out of the country scot-free ahead of his career-ending Scarface raid, and you arrive at the cocktail of spite and incredulity fueling Darkest Before Dawn.")
