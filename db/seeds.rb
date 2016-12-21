@@ -1,9 +1,22 @@
+<<<<<<< HEAD
 require '/Users/Huckleberry/Desktop/portland_musicbox/lib/label.rb'
 require("/Users/Huckleberry/Desktop/portland_musicbox/lib/artist.rb")
 require("/Users/Huckleberry/Desktop/portland_musicbox/lib/album.rb")
 require("/Users/Huckleberry/Desktop/portland_musicbox/lib/review.rb")
 require("/Users/Huckleberry/Desktop/portland_musicbox/lib/tag.rb")
 require("/Users/Huckleberry/Desktop/portland_musicbox/lib/track.rb")
+=======
+
+
+require("/home/elemental/Documents/portland_musicbox/lib/artist.rb")
+require("/home/elemental/Documents/portland_musicbox/lib/album.rb")
+require("/home/elemental/Documents/portland_musicbox/lib/track.rb")
+require("/home/elemental/Documents/portland_musicbox/lib/tag.rb")
+require("/home/elemental/Documents/portland_musicbox/lib/review.rb")
+require("/home/elemental/Documents/portland_musicbox/lib/comment.rb")
+require("/home/elemental/Documents/portland_musicbox/lib/label.rb")
+
+>>>>>>> 761973f5061e1a85139dd648e91a01b8a8c57bb8
 
 
 labels = ['Kill Rock Stars', 'Tender Loving Empire', 'Good Cheer', 'Golden Brown', 'Virgin', 'Dischord', 'GOOD Music', 'Geographic North', 'Straight', 'Glacial Pace']
@@ -49,7 +62,26 @@ end
 
 @artist4 = Artist.create(name: "Jefre Cantu-Ledesma")
 artist4_id = @artist4.id
-Album.create(name: "In Summer", credits: "Jefre Cantu-Ledesma has described his latest work, a five-track cassette release called In Summer, as a “catalogue of photographs.” The songs are meant as snapshots of people, places, and interests he developed in 2015. It’s not an unusual thing to say about your music;  there are ways in which songs can crystallize a memory better than a photograph. Cantu-Ledesma’s work is wordless, often rhythmless, making it a strange vehicle for visuals, but In Summer somehow lives up it’s visual description, and it is possibly one of the most pastoral and emotionally evocative pieces of noise music that’s been released this year.", artist_id: artist4_id, label_id: Label.find_by(name: 'Geographic North').id, album_photo_name: "https://f4.bcbits.com/img/a3365961670_10.jpg")
+summer = Album.create(name: "In Summer", credits: "Jefre Cantu-Ledesma has described his latest work, a five-track cassette release called In Summer, as a “catalogue of photographs.” The songs are meant as snapshots of people, places, and interests he developed in 2015. It’s not an unusual thing to say about your music;  there are ways in which songs can crystallize a memory better than a photograph. Cantu-Ledesma’s work is wordless, often rhythmless, making it a strange vehicle for visuals, but In Summer somehow lives up it’s visual description, and it is possibly one of the most pastoral and emotionally evocative pieces of noise music that’s been released this year.", artist_id: artist4_id, label_id: Label.find_by(name: 'Geographic North').id, album_photo_name: "https://f4.bcbits.com/img/a3365961670_10.jpg", music_embed: "https://bandcamp.com/EmbeddedPlayer/album=2857363265/size=large/bgcol=ffffff/linkcol=de270f/tracklist=false/artwork=none/transparent=true/")
+
+Review.create(album_id: summer.id, author: "Pitchfork", text:"Jefre Cantu-Ledesma has described his latest work, a five-track cassette release called In Summer, as a “catalogue of photographs.” The songs are meant as snapshots of people, places, and interests he developed in 2015. It’s not an unusual thing to say about your music;  there are ways in which songs can crystallize a memory better than a photograph. Cantu-Ledesma’s work is wordless, often rhythmless, making it a strange vehicle for visuals, but In Summer somehow lives up it’s visual description, and it is possibly one of the most pastoral and emotionally evocative pieces of noise music that’s been released this year.
+
+In Summer opens up with a magnificently colorful soundscape, “Love’s Refrain,” which throws a listener into a middle of a blooming world of warm noises: hiccuping warbles, burps of noise, static that fringes the track like pieces of confetti frozen in mid-air. Unlike so much ambient music or noise, it isn’t attempting to be atmospheric or even alien—it is heated, lush, and decidedly terrestrial. The song tears itself apart as it progresses, careening into a wall of noise in its closing minutes. Susan Sontag once wrote that a photograph invited a viewer “to participate in another person’s mortality, vulnerability, mutability” and that in this experience the photograph itself testifies “to time's relentless melt;” in over seven minutes of collaged noise, Cantu-Ledesma somehow manages to convey this feeling without a single word.
+
+He reproduces it throughout In Summer with varying levels of success. In “Little Dear Isle” he smashes together found sounds (the rustling of leaves and bird calls) with a menacing drone that transforms around the two-minute mark into something crunchier, distended, and buoyant. It’s a strange contrast to the nature sounds behind it, transforming bucolic trappings into something much more sinister  Some others are less successful: The title track is predictable, a beautiful drone that suddenly takes a left turn into a minefield of dissonance. “Blue Nudes (I-IV),” the album’s longest track (over 7 minutes) is more or less a solid block of sound. It’s less evocative or visual than the album’s other songs, and is textured in a more sculptural way. For what it’s worth, Cantu-Ledesma’s makes vases and planters, that he sells on his website. They’re beautiful, colorful, purposefully imperfect, and very layered. There is something of that art present in this song.
+
+The album concludes with “Prelude,” which drops you into pure chaos. The guttural growl of a dog, an indistinct whisper, and roiling static make it one of the most alive moments in the record. It’s terrifying and wistful, and it all dissolves away in the presence of a single piano playing the same set of notes over and over again. The last thirty or so seconds are near-silence, a wonderful way to close out a record which is so much about degradation and natural processes. In Summer situates itself in a conversation about  decay and entropy, and takes a stance that is almost optimistic because it renders chaos and dissonance thoughtfully and beautifully.")
+
+tracks = ["Love's Refrain", "Little Deer Isle", "In Summer", "Blue Nudes (I-IV)", "Prelude"]
+length = ["7:37", "3:29", "4:08", "7:42", "1:56"]
+tracks.each do |track|
+  summer.tracks.create(album_id: summer.id, artist_id: artist4_id, name: track, track_length: length[tracks.index(track)], track_number: (tracks.index(track)+1))
+end
+
+tags = ["alternative", "indie", "music", "experimental"]
+tags.each do |tag|
+  Tag.create(album_id: summer.id, text: tag)
+end
 
 @artist5 = Artist.create(name: "Captain Beefheart", profile_photo: "http://img.wennermedia.com/social/rs-143557-rectangle.jpg")
 artist5_id = @artist5.id
@@ -68,6 +100,8 @@ Thus it's very gratifying to say that Captain Beefheart's new album is a total s
 On \"Hair Pie: Bake One,\" for instance, the who group gets into a raucous wrangling horn dialog that reveals a strong Albert Ayler influence. The music truly meshes, flows, and excites in a way that almost none of the selfconscious, carefully crafted jazz-rock bullshit of the past year has done. And the reason for this is that while many other groups have picked up on the trappings of the new jazz. Cap and the Magic Band are into its essence, the white-hot stream of un-\"cultured\" energy, getting there with a minimum of strain to boot. This is the key to their whole instrumental approach, from the drummer's whirling poly- and even a-rhythmic patterns (compare them to Sonny Murray's on Ayler's Spiritual Unity or Ed Blackwell's on Don Cherry's Symphony for Improvisers), to the explosive, diffuse guitar lines, which (like Lou Reed's for the Velvet Underground or Gary Peacock's bass playing on Spiritual Unity) stretch, tear, and distend the electric guitar's usual vocabulary with the aim of extending that vocabulary past its present strictly patterned limitationsâ€\"limitations that are as tyrannically stultifying for the rock musician today as Charlie Parker's influence was for the jazzmen of the late Fifties.
 I mustn't forget the lyrics. You certainly won't; the album on a purely verbal level is an explosion of maniacal free-association incantations, eschewing (with the authentic taste that assassignates standards of Taste) solemn \"poetic\" pretensions and mundane, obvious monosyllabic mindlessness. Where, for instance, have you heard lyrics like these: \"Tits tits the blimp the blimp/The mother ship the mother ship/The brothers hid under the hood/From the olimp the blimp ... all the people stir/'n' the girls' knees tremble/'n' run 'n' wave their hands/'n' run their hands over the blimp the blimp ...\"
 The double record set costs as much as two regular albums, but unlike most of these superlong superexpensive items it's really sustained, and worth the money, which is perhaps not so much to pay for 27 songs and what may well be the most unusual and challenging musical experience you'll have this year.")
+
+troutmask.comments.create(text: "Although Jefre Cantu-Ledesma's addictive \"A Year With 13 Moons\" album released in 2015 was unabashedly experimental it was never unlistenable. A mixture of guitar feedback, both sculpted and random, dissonant electronics and unobtrusive percussion, its follow-up, the lazy billowing noise trails of \"In Summer\" couldn't be more different. Where \"... 13 Moons\" was, in the main, a collection of short blasts whose sequencing was part of what made the album gel, \"In Summer\" is a song-orientated record that I hope is the prelude to a similarly constructed album. No doubt the saddos who think music must be categorised to earn its place in the world will sticker. every copy of \"In Summer\" they can find with the word \"Shoegaze\" because it contains the odds snatch of guitar that reminds them of My Bloody Valentine. Instead, why not just celebrate the release of a new Jefre Cantu-Ledesma EP. I don't care if he's gazing at his shoes or a 19th century silver plated cheese grater: it's wonderful. Favorite track: In Summer.")
 
 troutmask.tracks.create({:name => "Frownland", :track_number => 1, :album_id => troutmask.id, :artist_id => artist5_id, :track_length => "1:41"})
 troutmask.tracks.create({:name => "The Dust Blows Forward 'n the Dust Blows Back'", :track_number => 2, :album_id => troutmask.id, :artist_id => artist5_id, :track_length => "1:53"})

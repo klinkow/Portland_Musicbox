@@ -21,7 +21,9 @@
     <h4><%= @album.reviews[0].text %></h4>
   </div>
   <div class="col-md-4">
-    <h4>by <a href="#"><%= @album.reviews[0].author %></a></h4><br><br>
+
+    <h4>by <a href="#"><%= @album.reviews[0].author() %></a></h4><br><br>
+    <h4>Label: <%= @album.label.name %></h4><br>
     <h4>Track List</h4>
       <ol class="well">
         <% @album.tracks.each do |track| %>
