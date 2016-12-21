@@ -347,3 +347,7 @@ div.col-sm-4 {
 div.artist_col {
   padding: 0 25px;
 }
+
+.track_length {
+  float: right;
+}
