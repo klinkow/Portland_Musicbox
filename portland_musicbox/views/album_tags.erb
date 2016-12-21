@@ -1,0 +1,16 @@
+<%= erb :header %>
+<div class="col-sm-8 col-sm-push-4">
+  <h3>Editing <%= @album.name %> Tags:</h3>
+  <ul class="nav nav-pills">
+    <% @album.tags.each() do |tag| %>
+    <li><a href="/tags/<%= tag.id %>">Remove <%= tag.text() %></a></li>
+    <% end %>
+  </ul>
+  <br>
+  <form class="" action="/albums/<%= @album.id %>/tags" method="post">
+    <label>Add a new tag:</label>
+    <input type="text" name="new_tag" placeholder=" new tag">
+    <button type="submit" class="btn btn-danger">Submit</button>
+  </form>
+</div>
+<%= erb :footer %>

@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20161220225530) do
+ActiveRecord::Schema.define(version: 20161220214624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +23,7 @@ ActiveRecord::Schema.define(version: 20161220225530) do
     t.string  "label"
     t.string  "format"
     t.string  "album_photo_name"
+    t.string  "embed_album"
     t.string  "music_embed"
   end
 
@@ -77,6 +79,11 @@ ActiveRecord::Schema.define(version: 20161220225530) do
   create_table "reviews", force: :cascade do |t|
     t.integer "album_id"
     t.string  "author"
+    t.string  "text"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.integer "album_id"
     t.string  "text"
   end
 
