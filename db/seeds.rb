@@ -1,9 +1,9 @@
-require '/Users/Guest/Desktop/portland_musicbox/lib/label.rb'
-require("/Users/Guest/Desktop/portland_musicbox/lib/artist.rb")
-require("/Users/Guest/Desktop/portland_musicbox/lib/album.rb")
-require("/Users/Guest/Desktop/portland_musicbox/lib/review.rb")
-require("/Users/Guest/Desktop/portland_musicbox/lib/tag.rb")
-require("/Users/Guest/Desktop/portland_musicbox/lib/track.rb")
+require '/Users/Huckleberry/Desktop/portland_musicbox/lib/label.rb'
+require("/Users/Huckleberry/Desktop/portland_musicbox/lib/artist.rb")
+require("/Users/Huckleberry/Desktop/portland_musicbox/lib/album.rb")
+require("/Users/Huckleberry/Desktop/portland_musicbox/lib/review.rb")
+require("/Users/Huckleberry/Desktop/portland_musicbox/lib/tag.rb")
+require("/Users/Huckleberry/Desktop/portland_musicbox/lib/track.rb")
 
 
 labels = ['Kill Rock Stars', 'Tender Loving Empire', 'Good Cheer', 'Golden Brown', 'Virgin', 'Dischord', 'GOOD Music', 'Geographic North', 'Straight', 'Glacial Pace']

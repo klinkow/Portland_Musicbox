@@ -14,6 +14,7 @@ get "/artists" do
 end
 
 get "/tags" do
+  @user = User.find_by(current: true)
   @tag_array = []
   tags = Tag.all()
   tags.each() do |tag|
