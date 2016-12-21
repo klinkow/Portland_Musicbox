@@ -6,6 +6,7 @@ class Album < ActiveRecord::Base
   has_many :reviews
   has_many :comments
   has_many :tags
+  belongs_to :label
   validates(:name, :presence => true)
   validates(:name, :uniqueness => true)
 end

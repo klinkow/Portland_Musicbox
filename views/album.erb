@@ -22,11 +22,11 @@
   </div>
   <div class="col-md-4">
     <h4>by <a href="#"><%= @album.reviews[0].author() %></a></h4><br><br>
-    <h4>Label: <%= @album.label %></h4><br>
+    <h4>Label: <%= @album.label.name %></h4><br>
     <h4>Track List</h4>
       <ol class="well">
         <% @album.tracks.each do |track| %>
-          <li><%= track.name %></li>
+          <li><%= track.name %><span class="track_length"><%= track.track_length %></span></li>
         <% end %>
       </ol>
     <br>
