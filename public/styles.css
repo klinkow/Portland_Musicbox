@@ -170,12 +170,11 @@ header.container h2 a{
 }
 
 header.container ul {
-  float: right;
   padding: 0;
   margin: 0;
   position: relative;
-  top: -30px;
-  right: 0px;
+  top: -38px;
+  right: -310px;
 }
 header.container ul li {
   display: inline-block;
@@ -198,6 +197,19 @@ header.container {
   padding: 0;
   height: 55px;
   margin-bottom: 25px;
+}
+
+form.search {
+  display: inline-block;
+  position: relative;
+  top: -10px;
+  right: -84px;
+}
+
+input.searchbar {
+  background: url("search.png") no-repeat left 10px center;
+  background-size: 15px;
+  padding-left: 30px;
 }
 
 /* ------ USER ARTIST DASHBOARD STYLES ------ */
@@ -345,7 +357,7 @@ div.col-sm-4 {
 }
 
 div.artist_col {
-  padding: 0 25px;
+  padding-right: 25px;
 }
 
 .track_length {
