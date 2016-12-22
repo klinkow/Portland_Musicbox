@@ -229,7 +229,7 @@ patch '/artist/profile' do
   if params["new_name"] == ""
     bandname = @artist.name
   end
-  @artist.update(name: bandname, profile_photo: photo)
+  @artist.update(name: bandname, profile_photo: photo, bio: params['bio'])
   redirect("/artist/profile")
 end
 

@@ -1,4 +1,4 @@
 class Tag < ActiveRecord::Base
-  belongs_to :albums
-  validates(:text, :album_id, {:presence => true})
+  has_and_belongs_to_many :albums
+  validates(:text, {:presence => true})
 end

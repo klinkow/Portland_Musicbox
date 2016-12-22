@@ -8,8 +8,13 @@
         <a href="/albums/<%= album.id %>"><img class="img-responsive" src="<%= album.album_photo_name %>"></a>
       </div>
 
-      <a href="/artists/<%= album.artist.id %>"><h4><%= album.artist.name %></h4></a>
-      <a href="/albums/<%= album.id %>"><h3><em><%= album.name %></em></h3></a>
+      <h4>
+        <a href="/artists/<%= album.artist.id %>"><%= album.artist.name %></a>
+        <% if @user != nil && @user.admin == true %>
+          <span class="track_length"><a href="/merch/<%= album.id%>">Add Merchandise Item</a></span>
+        <% end %>
+      </h4>
+      <h3><a href="/albums/<%= album.id %>"><em><%= album.name %></em></a></h3>
 
     </div>
   <% end %>
