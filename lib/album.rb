@@ -6,7 +6,7 @@ class Album < ActiveRecord::Base
   has_many :formats, through: :merchandises
   has_many :reviews
   has_many :comments
-  has_many :tags
+  has_and_belongs_to_many :tags
   belongs_to :label
   validates(:name, :presence => true)
   validates(:name, :uniqueness => true)
