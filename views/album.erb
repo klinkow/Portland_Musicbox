@@ -27,10 +27,12 @@
   <% if @album.reviews.any?() %>
     <h4><%= @album.reviews[0].text() %></h4>
     <h4>by <a href="#"><%= @album.reviews[0].author() %></a></h4><br><br>
-    <h4><a href="/albums">Back</a></h4>
-    <% if @user.admin == true %>
-      <a href="/new_review"><button class="btn btn-danger">Add Review</button></a>
-    <% end %>
+    <h4>
+      <a href="/albums">Back</a>
+      <% if @user.admin == true %>
+        <a href="/new_review"><button class="btn btn-danger">Add Review</button></a>
+      <% end %>
+    </h4>
   <% else %>
     <h2>There is no review for this album yet!</h2>
   <% end %>
@@ -48,9 +50,11 @@
 
     <ul class="nav nav-pills">
       <% @album.tags.each do |tag| %>
-      <li role="presentation"><a href="#"><%= tag.text %></a></li>
+        <li role="presentation"><a href="#"><%= tag.text %></a></li>
       <% end %>
-      <a href="/albums/<%= @album.id %>/tags"><button class="btn btn-danger">Manage Tags</button></a>
+      <% if @user.admin == true %>
+        <a href="/albums/<%= @album.id %>/tags"><button class="btn btn-danger">Manage Tags</button></a>
+      <% end %>
     </ul>
 
   </div>
