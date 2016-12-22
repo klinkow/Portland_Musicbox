@@ -1,3 +1,4 @@
+
 require("/Users/Guest/Desktop/portland_musicbox/lib/album.rb")
 require("/Users/Guest/Desktop/portland_musicbox/lib/artist.rb")
 require("/Users/Guest/Desktop/portland_musicbox/lib/comment.rb")
@@ -14,7 +15,7 @@ labels.each do |label|
 end
 
 
-@artist1 = Artist.create(name: "The Smashing Pumpkins", profile_photo: "https://s-media-cache-ak0.pinimg.com/originals/2b/6e/d3/2b6ed3c7887a6af8908fd48e61b3f851.jpg")
+@artist1 = Artist.create(name: "The Smashing Pumpkins", profile_photo: "https://s-media-cache-ak0.pinimg.com/originals/2b/6e/d3/2b6ed3c7887a6af8908fd48e61b3f851.jpg", bio: "The Smashing Pumpkins are an American alternative rock band from Chicago, Illinois, formed in 1988. Formed by frontman Billy Corgan (lead vocals, guitar) and James Iha (guitar), the band included D'arcy Wretzky (bass guitar) and Jimmy Chamberlin (drums) in its original incarnation.")
 artist1_id = @artist1.id
 album_id = Album.create(name: "Siamese Dream", credits: "Siamese Dream is the second studio album by the American alternative rock band The Smashing Pumpkins, released on July 27, 1993 on Virgin Records. The album fused diverse influences such as shoegazing, dream pop, heavy metal and progressive rock", artist_id: artist1_id, label_id: Label.find_by(name: "Virgin").id, music_embed: "https://bandcamp.com/EmbeddedPlayer/album=1491365032/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=none/track=1741442397/transparent=true/", album_photo_name: "https://hackskeptic.files.wordpress.com/2014/08/siamese.jpg")
 Review.create(album_id: album_id.id, author: "Ned Raggett", text: "It's sometimes easy to forget why Billy Corgan is famous, but these reissues of Smashing Pumpkins' first two albums underscore what made them so vital at the dawn of the 90s and why their influence is still felt today.")
@@ -25,7 +26,11 @@ tracks.each do |track|
   album_id.tracks.create(name: track, track_number: (tracks.index(track)+1), album_id:album_id.id, artist_id: artist1_id, track_length: length[tracks.index(track)])
 end
 
-@artist2 = Artist.create(name: "Fugazi", profile_photo: "http://s3.amazonaws.com/assets.dischord.com/images.d/artist/image/6557/KYEO_003.jpg")
+@artist2 = Artist.create(name: "Fugazi", profile_photo: "http://s3.amazonaws.com/assets.dischord.com/images.d/artist/image/6557/KYEO_003.jpg", bio: "Fugazi (/fuˈɡɑːzi/; foo-gah-zee) is an American post-hardcore band that formed in Washington, D.C. in 1987. The band consists of guitarists and vocalists Ian MacKaye and Guy Picciotto, bassist Joe Lally and drummer Brendan Canty.
+
+Fugazi are noted for their DIY ethical stance, manner of business practice,[1] and contempt towards the music industry.[2]
+
+Fugazi have performed numerous worldwide tours, produced six studio albums, a film and a comprehensive live series, gaining the band critical acclaim and success around the world.[3] Fugazi has been on indefinite hiatus since 2003.")
 artist2_id = @artist2.id
 album_id = Album.create(name: "End Hits", credits: "End Hits is the fifth studio album by the American post-hardcore band Fugazi. It was recorded at Inner Ear Studios from March 1997 to September 1997 and produced by Don Zientara & Fugazi. It was released on April 28, 1998 through Dischord Records.", artist_id: artist2_id, label_id: Label.find_by(name: "Dischord").id, music_embed: "https://bandcamp.com/EmbeddedPlayer/album=877702547/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=none/transparent=true/", album_photo_name: "http://cdn.shopify.com/s/files/1/0196/9358/products/End_Hits_1024x1024.jpg?v=1448028595")
 Review.create(album_id: album_id.id, author: "Andy Kellman", text: "Scary -- 'Closed Captioned' through 'Foreman's Dog' provides the worst stretch of material Fugazi have recorded, full of disjointed patches and awkward moments.")
@@ -37,7 +42,7 @@ tracks.each do |track|
   album_id.tracks.create(name: track, track_number: (tracks.index(track)+1), album_id:album_id.id, artist_id: artist2_id, track_length: length[tracks.index(track)])
 end
 
-@artist3 = Artist.create(name: "Pusha T", profile_photo: "https://pbs.twimg.com/profile_images/674338781185593344/FcK_WQ1U.jpg")
+@artist3 = Artist.create(name: "Pusha T", profile_photo: "https://pbs.twimg.com/profile_images/674338781185593344/FcK_WQ1U.jpg", bio: "Terrence LeVarr Thornton (born May 13, 1977),[1] better known by his stage name Pusha T, is an American hip hop recording artist. He initially gained major recognition as one-half of hip hop duo Clipse, alongside his brother Gene \"No Malice\" Thornton, with whom he founded Re-Up Records. In September 2010, Thornton announced his signing to Kanye West's GOOD Music imprint, under the aegis of Def Jam Recordings. In March 2011, he released his first solo project, a mixtape titled Fear of God. Thornton released his debut solo album My Name Is My Name, in October 2013. In November 2015, Kanye West appointed Pusha T to take over his role as president of GOOD Music.")
 artist3_id = @artist3.id
 album_id = Album.create(name: "Darkest Before The Dawn", credits: "King Push – Darkest Before Dawn: The Prelude is the second studio album by American hip hop recording artist Pusha T. It was released on December 18, 2015, by GOOD Music and Def Jam Recordings.", artist_id: artist3_id, label_id: Label.find_by(name: "GOOD Music").id, music_embed: "http://bandcamp.com/EmbeddedPlayer/album=2624352611/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=none/transparent=true/", album_photo_name: "https://images.rapgenius.com/3f72d8c2430990e8114a93b62c425f88.1000x1000x1.jpg")
 Review.create(album_id: album_id.id, author: "Craig Jenkins", text: "Pusha T's sophomore studio album is an exercise in pure craft for everyone involved. The beats sound like money, and the raps are whip smart and cleanly tailored; imagine Tony Montana slipping out of the country scot-free ahead of his career-ending Scarface raid, and you arrive at the cocktail of spite and incredulity fueling Darkest Before Dawn.")
@@ -48,7 +53,7 @@ tracks.each do |track|
   album_id.tracks.create(name: track, track_number: (tracks.index(track)+1), album_id:album_id.id, artist_id: artist3_id, track_length: length[tracks.index(track)])
 end
 
-@artist4 = Artist.create(name: "Jefre Cantu-Ledesma")
+@artist4 = Artist.create(name: "Jefre Cantu-Ledesma", bio: "Jefre Cantu-Ledesma is a multi-instrumentalist, member of several bands and co-founder of the Root Strata record label based out of San Francisco, California. Cantu-Ledesma got his start in the band Tarentel. He was one of the founding members and is still a primary figure in the band's line-up. In addition, Cantu-Ledesma is, and has been, involved in a slew of other musical projects. His label, Root Strata, is highly regarded by the drone/ambient music community and has an extensive catalog that includes artists such as Tarentel, Grouper, Yellow Swans, Charalambides, Keith Fullerton Whitman, Oneohtrix Point Never, Barn Owl, Starving Weirdos, Gregg Kowalsky, and more.")
 artist4_id = @artist4.id
 summer = Album.create(name: "In Summer", credits: "Jefre Cantu-Ledesma has described his latest work, a five-track cassette release called In Summer, as a “catalogue of photographs.” The songs are meant as snapshots of people, places, and interests he developed in 2015. It’s not an unusual thing to say about your music;  there are ways in which songs can crystallize a memory better than a photograph. Cantu-Ledesma’s work is wordless, often rhythmless, making it a strange vehicle for visuals, but In Summer somehow lives up it’s visual description, and it is possibly one of the most pastoral and emotionally evocative pieces of noise music that’s been released this year.", artist_id: artist4_id, label_id: Label.find_by(name: 'Geographic North').id, album_photo_name: "https://f4.bcbits.com/img/a3365961670_10.jpg", music_embed: "https://bandcamp.com/EmbeddedPlayer/album=2857363265/size=large/bgcol=ffffff/linkcol=de270f/tracklist=false/artwork=none/transparent=true/")
 
@@ -71,7 +76,7 @@ tags.each do |tag|
   Tag.create(album_id: summer.id, text: tag)
 end
 
-@artist5 = Artist.create(name: "Captain Beefheart", profile_photo: "http://img.wennermedia.com/social/rs-143557-rectangle.jpg")
+@artist5 = Artist.create(name: "Captain Beefheart", profile_photo: "http://img.wennermedia.com/social/rs-143557-rectangle.jpg", bio: "Don Van Vliet (/væn ˈvliːt/, born Don Glen Vliet;[2] January 15, 1941 – December 17, 2010) was an American singer, songwriter, musician and artist best known by the stage name Captain Beefheart. His musical work was conducted with a rotating ensemble of musicians called the Magic Band (1965–1982), with whom he recorded 13 studio albums. Noted for his powerful singing voice and his wide vocal range,[3] Van Vliet also played the harmonica, saxophone, and numerous other wind instruments. His music integrated blues, rock, psychedelia, and free jazz with contemporary experimental composition and the avant-garde.[4] Beefheart was also known for often constructing myths about his life and for exercising an almost dictatorial control over his supporting musicians.[5]")
 artist5_id = @artist5.id
 
 troutmask = Album.create(name: "Trout Mask Replica", credits: "Trout Mask Replica is the third album by Captain Beefheart and his Magic Band, released in June 1969. Produced by Beefheart's friend and former schoolmate Frank Zappa, it was originally released as a double album on Zappa's Straight Records label. Combining elements of R&B, garage rock, blues, avant-garde, free jazz and other genres of American music,[1] the album is regarded as an important work of experimental music and art rock.[2]", artist_id: artist5_id, label_id: Label.find_by(name: "Straight").id, album_photo_name: "http://img2-ak.lst.fm/i/u/ar0/88690231fafe417fb22aebc819005158", music_embed: "https://bandcamp.com/EmbeddedPlayer/album=193809830/size=large/bgcol=ffffff/linkcol=de270f/tracklist=false/artwork=none/transparent=true/")
@@ -106,7 +111,7 @@ troutmask.comments.create(text: "It if sometimes furnished unwilling as addition
 
 Turned it up should no valley cousin he. Speaking numerous ask did horrible packages set. Ashamed herself has distant can studied mrs. Led therefore its middleton perpetual fulfilled provision frankness. Small he drawn after among every three no. All having but you edward genius though remark one")
 
-@artist6 = Artist.create(profile_photo: 'http://glacialpace.com/wp-content/uploads/2014/02/benmoon_140206_mimickingbirds_121.jpg', name: "Mimicking Birds")
+@artist6 = Artist.create(profile_photo: 'http://glacialpace.com/wp-content/uploads/2014/02/benmoon_140206_mimickingbirds_121.jpg', name: "Mimicking Birds", bio: "Mimicking Birds is a rock group from Portland, Oregon centered on Nate Lacy (vocals, acoustic guitars), with Aaron Hanson (drums), Ian luxton (electric guitars), Matthan Minster (Guitar/Keys) and Adam Trachsel (Bass/Keys).")
 artist6_id = @artist6.id
 birds = Album.create(name: "Eons", credits: "On his debut as Mimicking Birds, Portland’s Nate Lacy exposed a rare gift for cyclical melody and atmospheric soul-searching. On Eons, his sophomore effort for Glacial Pace Recordings, Lacy opens up his internal world into a vast starry landscape where “Mountains slide away from their fault lines / Taper into new shorelines / Sliding down the timeline / Pull the nerves up through your spine.", artist_id: artist6_id, label_id: Label.find_by(name: "Glacial Pace").id, album_photo_name: "http://static.stereogum.com/uploads/2014/05/Mimicking-Birds-Eons-608x608.jpg")
 tracks = ["Memorabilia", "Acting Your Age", "Owl Hoots", "Spent Winter", "Bloodlines", "Night Light", "Water Under Burned Bridges", "Wormholes", "Seeing Eye Dog", "Moving On"]
