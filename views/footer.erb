@@ -14,11 +14,17 @@
   </div>
   <div class="col-sm-3">
     <ul class="footer-log">
+      <% if @user == nil %>
+      <li><a href="/login">LOG IN</a></li>
+      <% else %>
       <li><a href="/user/account/<%= @user.id %>"><%= @user.username %>'s dashboard</a></li>
+      <% end %>
       <li><a href="#">FAQ</a></li>
       <li><a href="#">Return Policy</a></li>
       <li><a href="#">Contact</a></li>
+      <% if @user != nil %>
       <li><a href="/logout/<%= @user.id %>"> Log Out</a></li>
+      <% end %>
     </ul>
   </div>
   </div>
