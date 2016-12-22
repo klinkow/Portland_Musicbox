@@ -27,7 +27,7 @@
 <div class="col-sm-8">
   <% if @album.reviews.any?() %>
     <h4><%= @album.reviews[0].text() %></h4>
-    <h4>by <a href="#"><%= @album.reviews[0].author() %></a></h4><br><br>
+    <h4>by <a href="#"><%= @album.reviews[0].author.name %></a></h4><br><br>
     <h4>
       <a href="/albums">Back</a>
       <% if @user != nil %>
