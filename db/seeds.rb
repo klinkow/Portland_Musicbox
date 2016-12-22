@@ -1,4 +1,3 @@
-
 require("/Users/Guest/Desktop/portland_musicbox/lib/album.rb")
 require("/Users/Guest/Desktop/portland_musicbox/lib/artist.rb")
 require("/Users/Guest/Desktop/portland_musicbox/lib/comment.rb")
@@ -8,8 +7,15 @@ require("/Users/Guest/Desktop/portland_musicbox/lib/tag.rb")
 require("/Users/Guest/Desktop/portland_musicbox/lib/track.rb")
 require("/Users/Guest/Desktop/portland_musicbox/lib/user.rb")
 
-User.create(fname: 'Devin', lname: 'Ludwig', username: 'admin', password: 'admin', admin: true)
+require("/Users/Huckleberry/Desktop/portland_musicbox/lib/album.rb")
+require("/Users/Huckleberry/Desktop/portland_musicbox/lib/artist.rb")
+require("/Users/Huckleberry/Desktop/portland_musicbox/lib/comment.rb")
+require("/Users/Huckleberry/Desktop/portland_musicbox/lib/label.rb")
+require("/Users/Huckleberry/Desktop/portland_musicbox/lib/review.rb")
+require("/Users/Huckleberry/Desktop/portland_musicbox/lib/tag.rb")
+require("/Users/Huckleberry/Desktop/portland_musicbox/lib/track.rb")
 
+User.create(fname: 'Devin', lname: 'Ludwig', username: 'admin', password: 'admin', admin: true)
 
 labels = ['Kill Rock Stars', 'Tender Loving Empire', 'Good Cheer', 'Golden Brown', 'Virgin', 'Dischord', 'GOOD Music', 'Geographic North', 'Straight', 'Glacial Pace']
 founded = [1991, 2005, 2014, 2016, 1972, 1980, 2004, 2007, 1969, 2005]
