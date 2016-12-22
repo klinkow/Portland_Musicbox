@@ -42,11 +42,13 @@ get "/merchandise/new" do
 end
 
 get "/tags/:id" do
+  @user = User.find_by(current: true)
   @tag = Tag.find(params.fetch('id').to_i)
   erb :tag_delete
 end
 
 delete "/albums/:id/tags" do
+  @user = User.find_by(current: true)
   @album = Album.find(params.fetch('id').to_i)
   current_tag = Tag.find(params.fetch('tag_id').to_i)
   current_tag.delete()
@@ -68,6 +70,7 @@ patch "/albums/:id" do
 end
 
 get "/albums/:id/tags" do
+  @user = User.find_by(current: true)
   @album = Album.find(params.fetch('id').to_i)
   erb :album_tags
 end
