@@ -1,0 +1,16 @@
+<%= erb :header %>
+<div class="container albums-container">
+  <h2><%= @author.name %>:</h2>
+  <div class="row">
+    <% Review.where(author_id: @author.id).each do |review| %>
+      <div class="col-md-4 album_holder">
+        <div>
+          <div class="album_photo" id="<%= review.album.id %>">
+            <a href="/albums/<%= review.album.id %>"><img class="img-responsive" src="<%= review.album.album_photo_name %>" ></a>
+          </div>
+          <a href="/albums/<%= review.album.id %>"><h2><%= review.album.name %></h4></a>
+          <a href="/artists/<%= review.album.artist.id %>"><h4><%= review.album.artist.name %></h2></a>
+        </div>
+    <% end %>
+  </div>
+</div>

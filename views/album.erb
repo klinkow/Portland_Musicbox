@@ -26,7 +26,7 @@
 <div class="col-md-8">
   <% if @album.reviews.any?() %>
     <h4><%= @album.reviews[0].text() %></h4>
-    <h4>by <a href="#"><%= @album.reviews[0].author() %></a></h4><br><br>
+    <h4>by <a href="/author/<%= @album.reviews[0].author_id%>"><%= @album.reviews[0].author.name %></a></h4><br><br>
     <h4><a href="/albums">Back</a></h4>
     <% if @user.admin == true %>
       <a href="/new_review"><button class="btn btn-danger">Add Review</button></a>
