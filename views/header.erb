@@ -1,4 +1,12 @@
 <div class="container-fluid sign-up-bar">
+  <div class="search-pull col-sm-12">
+    <img id="closesearch" src="<%='/x.png'%>" alt="X">
+    <form class="search" action="/search">
+      <input type="text" name="searchkey" class="searchinput" autofocus>
+      <button type="submit" class="searchbutton">Get Results</button>
+    </form>
+  </div>
+
   <div class="container">
 
     <ul id="log_in_ul">
@@ -6,7 +14,6 @@
         <li><a href="/login">LOG IN</a></li>
       <% else %>
         <li><a href="/user/account/<%= @user.id %>"><%= @user.username %>'s dashboard</a></li>
-        <li><a href="/logout/<%= @user.id %>"> LOG OUT</a></li>
       <% end %>
     </ul>
 
@@ -27,20 +34,16 @@
 
 
 <header class="container">
-  <h2><a href="/">MUSIC MUSIC MUSIC</a></h2>
+  <h2><a href="/">PORTLAND / MUSIC</a></h2>
 
   <ul>
     <li><a href="/labels">LABELS</a></li>
     <li><a href="/artists">ARTISTS</a></li>
     <li><a href="/albums">ALBUMS</a></li>
-    <li><a href="/tags">TAGS</a></li>
     <li><a href="/store">STORE</a></li>
   </ul>
   <ul id="search">
-    <form class="search" action="/search">
-      <li><input type="text" class="form-control searchbar" name="searchinfo"></li>
-      <li><button type="submit" class="btn btn-sm btn-danger" name="">SEARCH</button></li>
-    </form>
+      <li><img id="crazy" class="glass" src="<%= '/search.png' %>" alt="magnifying glass"></li>
   </ul>
 
 </header>

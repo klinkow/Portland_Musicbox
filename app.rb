@@ -48,6 +48,21 @@ get "/album/:album_id/tags/:id" do
   erb :tag_delete
 end
 
+get "/search" do
+  @user = User.find_by(current: true)
+  searchkey = params["searchkey"]
+  @artists = Artist.where(['name LIKE ?', "%#{searchkey}%"])
+  @albums = []
+  @artists.each do |artist|
+    artist.albums.each do |album|
+      @albums.push(album)
+    end
+  end
+  @labels = Label.where(['name LIKE ?', "%#{searchkey}%"])
+  @resultsquantity = (@artists.length + @albums.length + @labels.length)
+  erb :search_results
+end
+
 delete "/album/:id/delete/tag" do
   @user = User.find_by(current: true)
   @album = Album.find(params['id'])
