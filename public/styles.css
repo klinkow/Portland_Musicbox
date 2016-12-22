@@ -246,6 +246,18 @@ input.searchbar {
   padding-left: 30px;
 }
 
+/* ------ FOOTER STYLES ------ */
+footer {
+  background-color: black;
+  color: white;
+  height: 25vh;
+  margin-top: 40px;
+}
+
+ul.footer-log li {
+  list-style: none;
+}
+
 /* ------ USER ARTIST DASHBOARD STYLES ------ */
 
 .user_artist_menu {
