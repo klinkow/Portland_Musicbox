@@ -2,31 +2,36 @@
 
 <div class="container">
   <div class="page-header">
-    <div class="container albums-container">
+    <div class="container albums-container row">
       <div class="col-sm-4 album_holder">
         <div class="album_photo1" id="<%= @album.id %>">
           <img class="img-responsive" src="<%= @album.album_photo_name %>">
         </div>
       </div>
-      <div class="col-sm-8">
-        <h3><%= @album.artist.name %></h3>
-        <h1 class="album_name"><%= @album.name %></h1>
-        <h5><a href="/label/<%= @album.label_id %>"><%= Label.find(@album.label_id).name %></a></h5>
-        <iframe style="border: 0; width: 100%; height: 120px;" src="<%= @album.music_embed %>" seamless><%= @album.name %> by <%= @album.artist.name %></iframe>
+      <div class="album-details col-sm-8">
+        <div class="album-details-wrapper">
+          <h3><%= @album.artist.name %></h3>
+          <h1 class="album_name"><%= @album.name %></h1>
+          <h5><a href="/label/<%= @album.label_id %>"><%= Label.find(@album.label_id).name %></a></h5>
+        <footer>
+          <iframe style="border: 0; width: 100%; height: 120px;" src="<%= @album.music_embed %>" seamless><%= @album.name %> by <%= @album.artist.name %></iframe>
+        </footer>
       </div>
     </div>
   </div>
+</div>
+<div class="col-md-8">
   <% if @album.reviews.any?() %>
-    <div class="col-md-8">
-      <h4><%= @album.reviews[0].text() %></h4>
-    </div>
+    <h4><%= @album.reviews[0].text() %></h4>
     <h4>by <a href="#"><%= @album.reviews[0].author() %></a></h4><br><br>
-    <% if @user.username == "admin" %>
+    <h4><a href="/albums">Back</a></h4>
+    <% if @user.admin == true %>
       <a href="/new_review"><button class="btn btn-danger">Add Review</button></a>
     <% end %>
   <% else %>
     <h2>There is no review for this album yet!</h2>
   <% end %>
+</div>
   <div class="col-md-4">
     <h4>Label: <%= @album.label.name %></h4><br>
     <h4>Track List</h4>
@@ -46,10 +51,6 @@
     </ul>
 
   </div>
-  <div class="col-md-12">
-    <h4><a href="/albums">Back</a></h4>
-  </div>
-
 
   <div class="col-sm-8">
     <% @album.comments.each do |comment| %>

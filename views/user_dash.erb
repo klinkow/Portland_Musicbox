@@ -17,15 +17,16 @@
     </div>
 
 <!-- MENU -->
-    <div class="col-sm-2">
-      <h3 class="enable_menu">ARTIST MENU</h3>
-      <ul class="user_artist_menu">
-        <li><a href="/album/new">ADD ALBUM</a></li>
-        <li><a>SALES DATA</a></li>
-        <li><a href="/artist/profile">ARTIST PROFILE</a></li>
-        <li><a href="/logout/<%= @user.id %>">LOG OUT</a></li>
-      </ul>
-    </div>
+    <% if @user.artist_id != nil %>
+      <div class="col-sm-2">
+        <h3 class="enable_menu">ARTIST MENU</h3>
+        <ul class="user_artist_menu">
+          <li><a href="/album/new">ADD ALBUM</a></li>
+          <li><a>SALES DATA</a></li>
+          <li><a href="/artist/profile">ARTIST PROFILE</a></li>
+        </ul>
+      </div>
+    <% end %>
 
   </div>
 </div>

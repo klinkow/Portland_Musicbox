@@ -5,7 +5,8 @@
       <% if @user == nil %>
         <li><a href="/login">LOG IN</a></li>
       <% else %>
-        <li><a href="/user/account/<%= @user.id %>"><%= @user.username %> is logged in</a></li>
+        <li><a href="/user/account/<%= @user.id %>"><%= @user.username %> is logged in </a></li>
+        <li><a href="/logout/<%= @user.id %>"> LOG OUT</a></li>
       <% end %>
     </ul>
 

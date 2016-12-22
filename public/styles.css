@@ -119,6 +119,7 @@ ul#log_in_ul li {
   display: inline-block;
   float: left;
   padding: 0;
+  padding-right: 20px;
 }
 
 ul#log_in_ul li a {
@@ -253,13 +254,8 @@ div.tracks ol {
 }
 
 .album_photo1 {
-  width: 250px;
-  height: 250px;
-}
-
-.album_photo1 {
-  width: 250px;
-  height: 250px;
+  width: 100%;
+  height: 100%;
 }
 
 .album_photo:hover {
@@ -351,3 +347,28 @@ div.artist_col {
 .track_length {
   float: right;
 }
+
+textarea {
+  width: 100%;
+  max-width: 100%;
+}
+
+.artist_container , .label_holder {
+  text-align: center;
+}
+/*
+html, body {height: 100%;}
+
+.album-details {min-height: 100%;}
+
+.album-details-wrapper {overflow:auto;
+	padding-bottom: 120px;
+  height: auto;
+}
+
+iframe, .push {
+  position: relative;
+	margin-top: -120px;
+	height: 120px;
+	clear:both;
+}*/

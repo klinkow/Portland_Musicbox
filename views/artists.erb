@@ -4,9 +4,6 @@
   <div class="col-sm-12">
     <% Artist.all.each do |artist| %>
       <div class="col-sm-4 artist_container">
-        <div class="artist_photo">
-          <a href="/artists/<%= artist.id %>"><img class="img-responsive" src="<%= artist.profile_photo %>"></a>
-        </div>
         <a href="/artists/<%= artist.id %>"><h4><%= artist.name %></h4></a>
       </div>
     <% end %>

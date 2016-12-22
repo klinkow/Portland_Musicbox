@@ -3,6 +3,11 @@ Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 
+get '/' do
+  @user = User.find_by(current: true)
+  erb :index
+end
+
 get "/albums" do
   @user = User.find_by(current: true)
   erb :albums
@@ -113,11 +118,6 @@ get "/albums/:id" do
   @album = Album.find(params.fetch("id").to_i())
   @artist = Artist.find(@album.artist_id.to_i())
   erb :album
-end
-
-get '/' do
-  @user = User.find_by(current: true)
-  erb :index
 end
 
 get '/:login' do
@@ -231,12 +231,13 @@ post "/artist/new" do
   username = params["user_login"]
   pword = params["user_pword"]
   pwordV = params["pword_verify"]
+  bio = params["bio"]
   if pword == pwordV
     @user = User.new(fname: fname, lname: lname, street: street, city: city, state: state, zip: zip, username: username, password: pword, current: false)
     if @user.save
       @user.update(current: true)
       id = @user.id
-      @artist = Artist.new(name: artist, user_id: id)
+      @artist = Artist.new(name: artist, user_id: id, bio: bio)
       @artist.save
       redirect to('/user/account/'.concat(@user.id().to_s()))
     end
@@ -261,7 +262,5 @@ post "/user/new" do
       @user.update(current: true)
       redirect to('/user/account/'.concat(@user.id().to_s()))
     end
-  else
-    erb :error
   end
 end
