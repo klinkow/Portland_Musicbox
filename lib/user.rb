@@ -4,4 +4,5 @@ class User < ActiveRecord::Base
   scope(:current_user, -> do
     where({:current => true})
   end)
+  validates(:username, :uniqueness => true)
 end

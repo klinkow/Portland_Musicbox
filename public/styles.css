@@ -384,6 +384,7 @@ div.tracks ol {
 }
 
 .well {
+  padding: 30px;
   background-color: white;
   border-color: red;
 }
