@@ -61,7 +61,11 @@
       <% @album.tags.each do |tag| %>
         <li role="presentation"><a href="#"><%= tag.text %></a></li>
       <% end %>
+<<<<<<< HEAD
       <% if @user.admin == true %>
+=======
+      <% if @user != nil & @user.admin == true%>
+>>>>>>> 9edea231278119710bf7d2f0beb96a877aded2f3
         <a href="/albums/<%= @album.id %>/tags"><button class="btn btn-danger">Manage Tags</button></a>
       <% end %>
     </ul>
