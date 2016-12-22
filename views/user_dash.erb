@@ -4,15 +4,15 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-10">
-      <% if @artist != nil %>
-        <h3 class="band_name"><%= @artist.name %></h3>
-        <% if @form == nil %>
-          <%= erb :profile %>
-        <% elsif @form == "album" %>
-          <%= erb :album_form %>
-        <% elsif @form == "artist" %>
-          <%= erb :artist_profile %>
-        <% end %>
+      <h3 class="band_name"><%= @artist.name %></h3>
+      <% if @form == nil %>
+        <%= erb :profile %>
+      <% elsif @form == "album" %>
+        <%= erb :album_form %>
+      <% elsif @form == "artist" %>
+        <%= erb :artist_profile %>
+      <% elsif @form == "merch" %>
+        <%= erb :add_merch %>
       <% end %>
     </div>
 

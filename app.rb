@@ -19,6 +19,7 @@ get "/artists" do
 end
 
 get "/tags" do
+  @user = User.find_by(current: true)
   @tag_array = []
   tags = Tag.all()
   tags.each() do |tag|
@@ -26,6 +27,17 @@ get "/tags" do
   end
   @tag_array = @tag_array.uniq()
   erb :tags
+end
+
+get "/store" do
+  @user = User.find_by(current: true)
+  erb :store
+end
+
+get "/merchandise/new" do
+  @user = User.find_by(current: true)
+  @artist = Artist.find_by(user_id: @user.id)
+  erb :user_dash
 end
 
 get "/tags/:id" do

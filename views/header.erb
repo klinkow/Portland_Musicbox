@@ -13,8 +13,10 @@
 
     <ul id="create_account_ul">
       <li><a>Cart: 0</a></li>
-      <li><a href="/artist/new">CREATE ARTIST ACCOUNT</a></li>
-      <li><a href="/user/new">CREATE USER ACCOUNT</a></li>
+      <% if @user == nil %>
+        <li><a href="/artist/new">CREATE ARTIST ACCOUNT</a></li>
+        <li><a href="/user/new">CREATE USER ACCOUNT</a></li>
+      <% end %>
     </ul>
 
   </div>
@@ -31,7 +33,11 @@
     <li><a href="/labels">LABELS</a></li>
     <li><a href="/albums">ALBUMS</a></li>
     <li><a href="/tags">TAGS</a></li>
-    <li><a>STORE</a></li>
+    <li><a href="/store">STORE</a></li>
+    <form class="search" action="/search">
+      <li><input type="text" class="form-control searchbar" name="searchinfo"></li>
+      <li><button type="submit" class="btn btn-sm btn-danger" name="">SEARCH</button></li>
+    </form>
   </ul>
 
 </header>

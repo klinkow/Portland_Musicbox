@@ -113,6 +113,9 @@ div.container {
 
 ul#log_in_ul {
   padding: 0;
+  display: inline-block;
+  position: relative;
+  top: -10px;
 }
 
 ul#log_in_ul li {
@@ -137,6 +140,14 @@ ul#log_in_ul li a:hover {
 ul#log_in_ul li a:active {
   color: red;
 }
+
+ul#create_account_ul {
+  display: inline-block;
+  position: relative;
+  right: -627px;
+  top: 10px;
+}
+
 
 ul#create_account_ul li {
   display: inline-block;
@@ -171,12 +182,12 @@ header.container h2 a{
 }
 
 header.container ul {
-  float: right;
+  display: inline-block;
   padding: 0;
   margin: 0;
   position: relative;
-  top: -30px;
-  right: 0px;
+  top: 0px;
+  right: -12px;
 }
 header.container ul li {
   display: inline-block;
@@ -199,6 +210,19 @@ header.container {
   padding: 0;
   height: 55px;
   margin-bottom: 25px;
+}
+
+form.search {
+  display: inline-block;
+  position: relative;
+  top: -10px;
+  right: -84px;
+}
+
+input.searchbar {
+  background: url("search.png") no-repeat left 10px center;
+  background-size: 15px;
+  padding-left: 30px;
 }
 
 /* ------ USER ARTIST DASHBOARD STYLES ------ */
@@ -341,7 +365,7 @@ div.col-sm-4 {
 }
 
 div.artist_col {
-  padding: 0 25px;
+  padding-right: 25px;
 }
 
 .track_length {

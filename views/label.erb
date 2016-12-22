@@ -14,7 +14,7 @@
         <div class="tracks">
           <ol>
             <% album.tracks.each do |track| %>
-              <li><%= track.name %> <span class="track_length"><%= track.track_length %></span></li>
+              <li><%= track.name %><span class="track_length"><%= track.track_length %></span></li>
             <% end %>
           </ol>
           <a href="/label/<%= @label.id %>">Show All Albums</a>
