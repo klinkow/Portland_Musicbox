@@ -9,7 +9,7 @@
             <img class="img-responsive" src="<%= album.album_photo_name %>" >
           </div>
           <h2><%= album.name %></h4>
-          <h4><%= album.artist.name %></h2>
+          <h4><a href="/artists/<%= album.artist.id %>"><%= album.artist.name %></a></h2>
         </div>
         <div class="tracks">
           <ol>

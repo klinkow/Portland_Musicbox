@@ -1,3 +1,4 @@
+
 require("/Users/Guest/Desktop/portland_musicbox/lib/album.rb")
 require("/Users/Guest/Desktop/portland_musicbox/lib/artist.rb")
 require("/Users/Guest/Desktop/portland_musicbox/lib/author.rb")
@@ -7,11 +8,13 @@ require("/Users/Guest/Desktop/portland_musicbox/lib/review.rb")
 require("/Users/Guest/Desktop/portland_musicbox/lib/tag.rb")
 require("/Users/Guest/Desktop/portland_musicbox/lib/track.rb")
 require("/Users/Guest/Desktop/portland_musicbox/lib/user.rb")
+require("/Users/Guest/Desktop/portland_musicbox/lib/merchandise.rb")
+require("/Users/Guest/Desktop/portland_musicbox/lib/format.rb")
 
 User.create(fname: 'Devin', lname: 'Ludwig', username: 'admin', password: 'admin', admin: true)
 
-labels = ['Kill Rock Stars', 'Tender Loving Empire', 'Good Cheer', 'Golden Brown', 'Virgin', 'Dischord', 'GOOD Music', 'Geographic North', 'Straight', 'Glacial Pace']
-founded = [1991, 2005, 2014, 2016, 1972, 1980, 2004, 2007, 1969, 2005]
+labels = ['Unknown', 'Kill Rock Stars', 'Tender Loving Empire', 'Good Cheer', 'Golden Brown', 'Virgin', 'Dischord', 'GOOD Music', 'Geographic North', 'Straight', 'Glacial Pace']
+founded = [1900, 1991, 2005, 2014, 2016, 1972, 1980, 2004, 2007, 1969, 2005]
 labels.each do |label|
    Label.create(name: label, est_date: founded[labels.index(label)])
 end
@@ -78,19 +81,21 @@ end
 
 tags = ["alternative", "indie", "music", "experimental"]
 tags.each do |tag|
-  Tag.create(album_id: summer.id, text: tag)
+  summer.tags.create(text: tag)
 end
 
 @artist5 = Artist.create(name: "Captain Beefheart", profile_photo: "http://img.wennermedia.com/social/rs-143557-rectangle.jpg", bio: "Don Van Vliet (/væn ˈvliːt/, born Don Glen Vliet;[2] January 15, 1941 – December 17, 2010) was an American singer, songwriter, musician and artist best known by the stage name Captain Beefheart. His musical work was conducted with a rotating ensemble of musicians called the Magic Band (1965–1982), with whom he recorded 13 studio albums. Noted for his powerful singing voice and his wide vocal range,[3] Van Vliet also played the harmonica, saxophone, and numerous other wind instruments. His music integrated blues, rock, psychedelia, and free jazz with contemporary experimental composition and the avant-garde.[4] Beefheart was also known for often constructing myths about his life and for exercising an almost dictatorial control over his supporting musicians.[5]")
 artist5_id = @artist5.id
 
 troutmask = Album.create(name: "Trout Mask Replica", credits: "Trout Mask Replica is the third album by Captain Beefheart and his Magic Band, released in June 1969. Produced by Beefheart's friend and former schoolmate Frank Zappa, it was originally released as a double album on Zappa's Straight Records label. Combining elements of R&B, garage rock, blues, avant-garde, free jazz and other genres of American music,[1] the album is regarded as an important work of experimental music and art rock.[2]", artist_id: artist5_id, label_id: Label.find_by(name: "Straight").id, album_photo_name: "http://img2-ak.lst.fm/i/u/ar0/88690231fafe417fb22aebc819005158", music_embed: "https://bandcamp.com/EmbeddedPlayer/album=193809830/size=large/bgcol=ffffff/linkcol=de270f/tracklist=false/artwork=none/transparent=true/")
+
 author = Author.create(name: "The Rolling Stone")
 Tag.create(album_id: troutmask.id, text: "1969 albums")
 Tag.create(album_id: troutmask.id, text: "Outsider music")
 Tag.create(album_id: troutmask.id, text: "Protopunk albums")
 Tag.create(album_id: troutmask.id, text: "Straight Records albums")
 Tag.create(album_id: troutmask.id, text: "English-language albums")
+
 
 Review.create(album_id: troutmask.id, author_id: author.id, text: "Captain Beefheart, the only true dadaist in rock, has been victimized repeatedly by public incomprehension and critical authoritarianism. The tendency has been to chide C. B. and his Band as a potentially acceptable blues band who were misled onto the paths of greedy trendy commercialism. What the critics failed to see was that this was a band with a vision, that their music, difficult raucous and rough as it is, proceeded from a unique and original consciousness.
 This became dramatically apparent with their last album. Since their music derived as much from the new free jazz and African chant rhythms as from Delta blues, the songs tended to be rattly and wayward, clattering along on wierdly jabbering high-pitched guitars and sprung rhythms. But the total conception and its execution was more in the nature of a tribal Pharoh Sanders Archie Shepp fire-exorcism than the ranting noise of the Blue Cheer strain of groups.

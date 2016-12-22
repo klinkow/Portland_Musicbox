@@ -41,18 +41,34 @@ get "/merchandise/new" do
   erb :user_dash
 end
 
-get "/tags/:id" do
+get "/album/:album_id/tags/:id" do
+  @album = Album.find(params['album_id'])
   @user = User.find_by(current: true)
   @tag = Tag.find(params.fetch('id').to_i)
   erb :tag_delete
 end
 
-delete "/albums/:id/tags" do
+get "/search" do
   @user = User.find_by(current: true)
-  @album = Album.find(params.fetch('id').to_i)
+  searchkey = params["searchkey"]
+  @artists = Artist.where(['name LIKE ?', "%#{searchkey}%"])
+  @albums = []
+  @artists.each do |artist|
+    artist.albums.each do |album|
+      @albums.push(album)
+    end
+  end
+  @labels = Label.where(['name LIKE ?', "%#{searchkey}%"])
+  @resultsquantity = (@artists.length + @albums.length + @labels.length)
+  erb :search_results
+end
+
+delete "/album/:id/delete/tag" do
+  @user = User.find_by(current: true)
+  @album = Album.find(params['id'])
   current_tag = Tag.find(params.fetch('tag_id').to_i)
   current_tag.delete()
-  erb :album_tags
+  redirect("/album/#{@album.id}/tags")
 end
 
 get "/albums/:id" do
@@ -214,7 +230,7 @@ patch '/artist/profile' do
   if params["new_name"] == ""
     bandname = @artist.name
   end
-  @artist.update(name: bandname, profile_photo: photo)
+  @artist.update(name: bandname, profile_photo: photo, bio: params['bio'])
   redirect("/artist/profile")
 end
 

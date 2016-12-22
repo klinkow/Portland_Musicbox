@@ -16,26 +16,35 @@
           <h3><%= @album.artist.name %></h3>
           <h1 class="album_name"><%= @album.name %></h1>
           <h5><a href="/label/<%= @album.label_id %>"><%= Label.find(@album.label_id).name %></a></h5>
-        <footer>
+        </div>
+        <div class="embed">
           <iframe style="border: 0; width: 100%; height: 120px;" src="<%= @album.music_embed %>" seamless><%= @album.name %> by <%= @album.artist.name %></iframe>
-        </footer>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="col-md-8">
-  <% if @album.reviews.any?() %>
-    <h4><%= @album.reviews[0].text() %></h4>
-    <h4>by <a href="/author/<%= @album.reviews[0].author_id%>"><%= @album.reviews[0].author.name %></a></h4><br><br>
-    <h4><a href="/albums">Back</a></h4>
-    <% if @user.admin == true %>
-      <a href="/new_review"><button class="btn btn-danger">Add Review</button></a>
+  <div class="col-sm-8">
+    <% if @album.reviews.any?() %>
+      <h4><%= @album.reviews[0].text() %></h4>
+      <h4>by <a href="/author/<%= @album.reviews[0].author_id%>"><%= @album.reviews[0].author.name %></a></h4><br><br>
+      <h4><a href="/albums">Back</a></h4>
+      <% if @user.admin == true %>
+        <a href="/new_review"><button class="btn btn-danger">Add Review</button></a>
+      <% end %>
+    <% else %>
+      <h2>There is no review for this album yet!</h2>
     <% end %>
-  <% else %>
-    <h2>There is no review for this album yet!</h2>
-  <% end %>
-</div>
-  <div class="col-md-4">
+    <div>
+      <% @album.comments.each do |comment| %>
+        <div class="well">
+          <p><%= comment.text %></p>
+          <p>by -<%= User.find(comment.user_id) rescue "anonymous" %>-</p>
+        </div>
+      <% end %>
+      <a href="/albums/<%= @album.id %>/new_comment"><button class="btn btn-danger">Add Comment</button></a>
+    </div>
+  </div>
+  <div class="col-sm-4">
     <h4>Label: <%= @album.label.name %></h4><br>
     <h4>Track List</h4>
       <ol class="well">
@@ -48,21 +57,11 @@
 
     <ul class="nav nav-pills">
       <% @album.tags.each do |tag| %>
-      <li role="presentation"><a href="#"><%= tag.text %></a></li>
+        <li role="presentation"><a href="#"><%= tag.text %></a></li>
       <% end %>
-      <a href="/albums/<%= @album.id %>/tags"><button class="btn btn-danger">Manage Tags</button></a>
+      <% if @user.admin == true %>
+        <a href="/albums/<%= @album.id %>/tags"><button class="btn btn-danger">Manage Tags</button></a>
+      <% end %>
     </ul>
-
   </div>
-
-  <div class="col-sm-8">
-    <% @album.comments.each do |comment| %>
-    <div class="well">
-      <p><%= comment.text %></p>
-      <p>by -<%= User.find(comment.user_id) rescue "anonymous" %>-</p>
-    </div>
-    <% end %>
-    <a href="/albums/<%= @album.id %>/new_comment"><button class="btn btn-danger">Add Comment</button></a>
-  </div>
-
 </div>

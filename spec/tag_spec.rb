@@ -5,4 +5,5 @@ describe(Tag) do
     tag = Tag.create({:text => ""})
     expect(Tag.any?()).to(eq(false))
   end
+  it {should have_and_belong_to_many :albums}
 end

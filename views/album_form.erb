@@ -6,13 +6,13 @@
    <input name="embed" class="form-control" placeholder="Link to Bandcamp Embed">
  </div>
   <div class="form-group">
-    <input name="name" class="form-control" placeholder="Album Name">
+    <input required name="name" class="form-control" placeholder="Album Name">
   </div>
   <div class="form-group">
     <textarea name="credits" class="form-control" rows="4" placeholder="Credits"></textarea>
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" name="tracks[]" placeholder="Track Name">
+    <input required type="text" class="form-control" name="tracks[]" placeholder="Track Name">
   </div>
   <div class="starting_input">
   </div>
@@ -22,7 +22,7 @@
     <div class="form-group">
       <label for="label">Label</label>
       <select name="label">
-        <option value=nil> No Label </option>
+        <option value = '1'> No Label </option>
         <% Label.all.each do |label| %>
         <option value='<%= label.id %>'><%= label.name %></option>
         <% end %>
@@ -31,6 +31,11 @@
       <input name="new_label" placeholder="Add New Label">
       <label for="new_date">Established in:</label>
       <input type="number" name="new_date" placeholder="(Year)">
+  </div>
+  <div class="form-group">
+    <% Tag.all.each do |tag| %>
+      <label class="checkbox-inline"><input type="checkbox" name="tags[]" value="<%= tag.id %>"><%= tag.text %></label>
+    <% end %>
   </div>
   <button class="btn btn-danger" type="submit">Add Album</button>
 </form>

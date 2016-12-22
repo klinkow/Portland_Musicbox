@@ -2,6 +2,7 @@ require 'spec_helper'
  describe User do
    it {should have_and_belong_to_many :purchases}
    it {should have_one :artist}
+   it {should validate_uniqueness_of :username}
    describe(".current_user") do
      it("returns and empy array for current user object if no one has logged in") do
        @current = User.new(current: false)

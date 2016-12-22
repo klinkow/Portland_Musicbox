@@ -2,10 +2,9 @@
 <div class="col-sm-8 col-sm-push-4">
   <h3>Delete <%= @tag.text %>?</h3>
   <br>
-  <form class="" action="/albums/<%= @tag.album_id %>/tags" method="post">
+  <form class="" action="/albums/<%= @album.id %>/delete/tag" method="post">
     <input type="hidden" name="_method" value="delete">
     <input type="hidden" name="tag_id" value="<%= @tag.id %>">
     <button type="submit" class="btn btn-danger">Delete</button>
   </form>
 </div>
-<%= erb :footer %>

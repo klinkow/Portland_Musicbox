@@ -13,8 +13,11 @@
     <title>Portland's Musicbox</title>
   </head>
   <body>
-    <div>
-      <%= yield %>
+    <div class="body-wrap">
+      <div>
+        <%= yield %>
+      </div>
     </div>
+    <%= erb :footer %>
   </body>
 </html>
