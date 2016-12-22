@@ -41,6 +41,20 @@ get "/merchandise/new" do
   erb :user_dash
 end
 
+get "/search" do
+  @user = User.find_by(current: true)
+  searchkey = params["searchkey"]
+  @artists = Artist.where(['name LIKE ?', "%#{searchkey}%"])
+  @albums = []
+  @artists.each do |artist|
+    artist.albums.each do |album|
+      @albums.push(album)
+    end
+  end
+  @resultsquantity = (@artists.length + @albums.length)
+  erb :search_results
+end
+
 get "/tags/:id" do
   @user = User.find_by(current: true)
   @tag = Tag.find(params.fetch('id').to_i)

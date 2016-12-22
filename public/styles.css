@@ -6,6 +6,10 @@ body {
   font-weight: 400;
 }
 
+.body-wrap {
+  min-height: calc(100vh - 75px);
+}
+
 a,
 a:hover {
   text-decoration: none;
@@ -250,13 +254,41 @@ input.searchbar {
 footer {
   background-color: black;
   color: white;
-  height: 25vh;
+  height: 200px;
   margin-top: 40px;
 }
 
-ul.footer-log li {
+ul.footer-log li,
+ul.footer-work li {
   list-style: none;
+  text-align: right;
 }
+
+ul.footer-log li a,
+ul.footer-work li a {
+  color: white;
+  font-size: 1.6rem;
+}
+
+ul.footer-log li a:hover,
+ul.footer-work li a:hover {
+  color: red;
+}
+
+footer div.row {
+  margin-top: 25px;
+  padding: 0 50px;
+}
+
+.social-icon {
+  height: 35px;
+  display: inline-block;
+  padding-right: 25px;
+}
+
+.social-icon:hover {
+}
+
 
 /* ------ USER ARTIST DASHBOARD STYLES ------ */
 
@@ -431,19 +463,18 @@ textarea {
 .artist_container , .label_holder {
   text-align: center;
 }
-/*
-html, body {height: 100%;}
 
-.album-details {min-height: 100%;}
+/* ------ SEARCH STYLES ------ */
 
-.album-details-wrapper {overflow:auto;
-	padding-bottom: 120px;
-  height: auto;
+.results {
+  margin-top: 15px;
 }
 
-iframe, .push {
-  position: relative;
-	margin-top: -120px;
-	height: 120px;
-	clear:both;
-}*/
+div.results ul {
+  padding: 0;
+}
+
+div.results ul li {
+  list-style: none;
+  padding: 0;
+}
