@@ -18,14 +18,14 @@ get "/artists" do
   erb :artists
 end
 
+get "/author/:id" do
+  @user = User.find_by(current: true)
+  @author = Author.find(params['id'])
+  erb :author
+end
+
 get "/tags" do
   @user = User.find_by(current: true)
-  @tag_array = []
-  tags = Tag.all()
-  tags.each() do |tag|
-    @tag_array.push(tag.text())
-  end
-  @tag_array = @tag_array.uniq()
   erb :tags
 end
 

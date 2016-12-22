@@ -1,9 +1,16 @@
 <%= erb :header %>
 
 <div class="container">
-  <ul class="nav nav-pills">
-    <% @tag_array.each do |tag| %>
-    <li role="presentation"><a href="/tags/<%= tag %>"><%= tag %></a></li>
-    <% end %>
-  </ul>
+  <% if Tag.all.any?() %>
+    <legend>List of Tag(s)</legend>
+    <div class="well">
+      <ul class="nav nav-pills">
+        <% Tag.all.each do |tag| %>
+        <li role="presentation"><a href="/tags/<%= tag.id %>"><%= tag.text %></a></li>
+        <% end %>
+      </ul>
+    </div>
+  <% else %>
+    <h3>No tag(s) yet</h3>
+  <% end %>
 </div>
