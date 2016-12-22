@@ -1,10 +1,10 @@
 <% @artist.albums.each do |album| %>
   <div class="album_holder">
-    <div class="col-md-4 album_photo" id="<%= album.id %>">
+    <div class="col-sm-4 album_photo" id="<%= album.id %>">
       <img class="img-responsive" src="<%= album.album_photo_name %>" >
       <h4><%= album.name %></h4>
     </div>
-    <div class="col-md-4 tracks">
+    <div class="col-sm-4 tracks">
       <% if album.label_id != nil %>
         <h5><a href="/label/<%= album.label_id %>"><%= Label.find(album.label_id).name %></a></h5>
       <% end %>
@@ -14,7 +14,7 @@
         <% end %>
       </ol>
     </div>
-    <div class="col-md-4 tracks">
+    <div class="col-sm-4 tracks">
       <form action="/album/<%= album.id %> " method="post">
         <input type="hidden" name="_method" value="delete">
         <button type="submit" class="btn btn-danger">Delete Album</button>

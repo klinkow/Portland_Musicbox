@@ -4,6 +4,7 @@ body {
   box-sizing: border-box;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 400;
+  background-color: cornsilk;
 }
 
 a,
@@ -115,12 +116,10 @@ ul#log_in_ul {
   padding: 0;
   display: inline-block;
   position: relative;
-  top: -10px;
 }
 
 ul#log_in_ul li {
   display: inline-block;
-  float: left;
   padding: 0;
 }
 
@@ -143,19 +142,32 @@ ul#log_in_ul li a:active {
 ul#create_account_ul {
   display: inline-block;
   position: relative;
-  right: -627px;
+  left: 620px;
   top: 10px;
+}
+
+ul#cart_ul {
+  display: inline-block;
+  float: right;
+  position: relative;
+  top: 7px;
+}
+
+ul#cart_ul li.cart a {
+  position: relative;
+  color:red;
+  font-weight: bold;
+  /*left: 368px;*/
 }
 
 
 ul#create_account_ul li {
   display: inline-block;
-  float: right;
   padding: 0;
   height: 30px;
 }
 
-ul#create_account_ul li:nth-child(n+2) {
+ul#create_account_ul li:nth-child(n+1) {
   padding-right: 20px;
   margin-right: 20px;
 }
@@ -175,9 +187,14 @@ header.container h2 {
 }
 
 header.container h2 a{
-  color: red;
+  color: black;
   display: inline-block;
   font-weight: 600;
+}
+
+header.container h2 a:hover {
+  color: red;
+  opacity: .8;
 }
 
 header.container ul {
@@ -186,14 +203,19 @@ header.container ul {
   margin: 0;
   position: relative;
   top: 0px;
-  right: -12px;
+  right: -30px;
 }
 header.container ul li {
   display: inline-block;
 }
 
 header.container ul li a {
+    color: black;
+  }
+
+header.container ul li a:hover {
     color: red;
+    opacity: .8;
   }
 
 header.container ul li {
@@ -205,17 +227,17 @@ header.container ul li:last-child {
 }
 
 header.container {
-  border-bottom: 1px solid red;
+  border-bottom: 2px solid black;
   padding: 0;
   height: 55px;
   margin-bottom: 25px;
 }
 
-form.search {
+ul#search form.search {
   display: inline-block;
   position: relative;
   top: -10px;
-  right: -84px;
+  right: -175px;
 }
 
 input.searchbar {
@@ -252,9 +274,23 @@ input.searchbar {
   font-weight: bold;
 }
 
+.enable_menu:hover {
+  color: slategray;
+  text-decoration: line-through;
+}
+
 .band_name {
   font-weight: bold;
   border-bottom: 2px solid red;
+}
+
+.band_name a {
+  color: black;
+}
+
+.band_name a:hover {
+  color: slategray;
+  text-decoration: line-through;
 }
 
 div.album_holder {
@@ -301,11 +337,15 @@ div.tracks ol {
 
 .page-header {
   border-bottom-color: red;
+  margin-top: 0;
+}
+
+div.col-sm-4.tracks {
+  padding-left: 25px;
 }
 
 .tracks {
   display: none;
-  padding: 10px;
 }
 
 ol {

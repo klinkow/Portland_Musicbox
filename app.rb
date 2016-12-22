@@ -32,6 +32,7 @@ end
 get "/merchandise/new" do
   @user = User.find_by(current: true)
   @artist = Artist.find_by(user_id: @user.id)
+  @form = "merch"
   erb :user_dash
 end
 
@@ -48,7 +49,7 @@ delete "/albums/:id/tags" do
 end
 
 get "/albums/:id" do
-  @album = Album.find(params.fetch('id').to_i)
+  @album = Album.find_by(id: params["id"].to_i)
   @user = User.find_by(current: true)
   erb :album
 end
