@@ -24,10 +24,6 @@ a {
   color: red;
 }
 
-ul {
-  list-style: none;
-}
-
 
 .cover-row {
   width: 100%;
@@ -245,16 +241,16 @@ header.container {
   margin-bottom: 25px;
 }
 
-ul#search {
+ul#search form.search {
   display: inline-block;
   position: relative;
-  top: -5px;
-  right: -532px;
+  top: -10px;
+  right: -255px;
 }
 
 @media screen and (min-width: 992px) AND (max-width: 1200px) {
-  ul#search  {
-    right: -335px;
+  ul#search form.search {
+    right: -55px;
   }
 }
 
@@ -528,13 +524,12 @@ form.search {
 
 .searchinput {
   width: 85vw;
-  height: 55px;
-  margin: 35px 0 0 55px;
+  height: 25px;
+  margin: 55px 0 0 55px;
   border: 0;
   border-bottom: 2px solid white;
   color: white;
   background: black;
-  font-size: 5rem;
 }
 
 .searchbutton {
@@ -546,17 +541,4 @@ form.search {
 
 .searchinput:focus {
   outline: none;
-}
-
-.searchbutton:focus {
-  outline: none;
-}
-
-.glass {
-  height: 15px;
-
-}
-
-.glass:hover {
-  cursor: pointer;
 }

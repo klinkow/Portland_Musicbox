@@ -51,7 +51,8 @@ get "/search" do
       @albums.push(album)
     end
   end
-  @resultsquantity = (@artists.length + @albums.length)
+  @labels = Label.where(['name LIKE ?', "%#{searchkey}%"])
+  @resultsquantity = (@artists.length + @albums.length + @labels.length)
   erb :search_results
 end
 

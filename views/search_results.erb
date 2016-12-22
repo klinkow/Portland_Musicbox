@@ -2,30 +2,43 @@
 
 
 <div class="container">
-    <div class="col-sm-12">
-      <h1>SEARCH RESULTS</h1>
-      <h4><%= @resultsquantity %> Results </h4>
-    </div>
-    <% if @artists.length > 0 %>
-    <div class=" col-sm-4 results">
-      <h4> ARTISTS </h4>
-      <ul id="artist_results">
-        <% @artists.each do |artist| %>
-        <li><a href="/artists/<%= artist.id %>"><%= artist.name %></a></li>
-        <% end %>
-      </ul>
-      <% end %>
-    </div>
+  <div class="col-sm-12">
+    <h1>SEARCH RESULTS</h1>
+    <h4><%= @resultsquantity %> Results </h4>
+  </div>
 
-    <% if @albums.length > 0 %>
-    <div class=" col-sm-4 results">
-      <h4> ALBUMS </h4>
-      <ul id="albums_results">
-        <% @albums.each do |album| %>
-        <li><a href="/albums/<%= album.id %>"><%= album.name %></a></li>
-        <% end %>
-      </ul>
+  <% if @artists.length > 0 %>
+  <div class=" col-sm-4 results">
+    <h4> ARTISTS </h4>
+    <ul id="artist_results">
+      <% @artists.each do |artist| %>
+      <li><a href="/artists/<%= artist.id %>"><%= artist.name %></a></li>
       <% end %>
-    </div>
+    </ul>
+  </div>
+  <% end %>
+
+
+  <% if @albums.length > 0 %>
+  <div class=" col-sm-4 results">
+    <h4> ALBUMS </h4>
+    <ul id="albums_results">
+      <% @albums.each do |album| %>
+      <li><a href="/albums/<%= album.id %>"><%= album.name %></a></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <% if @labels.length > 0 %>
+  <div class=" col-sm-4 results">
+    <h4> LABELS </h4>
+    <ul id="label_results">
+      <% @labels.each do |label| %>
+      <li><a href="/label/<%= label.id %>"><%= label.name %></a></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
 
 </div>

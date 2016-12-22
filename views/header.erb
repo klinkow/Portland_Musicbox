@@ -1,4 +1,12 @@
 <div class="container-fluid sign-up-bar">
+  <div class="search-pull col-sm-12">
+    <img id="closesearch" src="<%='/x.png'%>" alt="X">
+    <form class="search" action="/search">
+      <input type="text" name="searchkey" class="searchinput" autofocus>
+      <button type="submit" class="searchbutton">Get Results</button>
+    </form>
+  </div>
+
   <div class="container">
 
     <ul id="log_in_ul">
@@ -32,14 +40,10 @@
     <li><a href="/labels">LABELS</a></li>
     <li><a href="/artists">ARTISTS</a></li>
     <li><a href="/albums">ALBUMS</a></li>
-    <li><a href="/tags">TAGS</a></li>
     <li><a href="/store">STORE</a></li>
   </ul>
   <ul id="search">
-    <form class="search" action="/search">
-      <li><input type="text" class="form-control searchbar" name="searchkey"></li>
-      <li><button type="submit" class="btn btn-sm btn-danger" name="">SEARCH</button></li>
-    </form>
+      <li><img id="crazy" class="glass" src="<%= '/search.png' %>" alt="magnifying glass"></li>
   </ul>
 
 </header>
