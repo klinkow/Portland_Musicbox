@@ -1,7 +1,7 @@
 <%= erb :header %>
 
 <div class="container">
-  <div class="col-sm-12">
+  <div class="row">
     <div class="col-sm-6 artist_col">
       <h2><%= @artist.name %></h2>
       <img class="img-responsive" src="<%= @artist.profile_photo %>">
@@ -11,4 +11,24 @@
       <h5><%= @artist.bio %></h5>
     </div>
   </div>
+  <h2>Albums</h2>
+  <% @artist.albums.each do |album| %>
+    <div class="album_holder">
+      <div class="col-sm-4 album_photo" id="<%= album.id %>">
+        <img class="img-responsive" src="<%= album.album_photo_name %>" >
+        <h4><%= album.name %></h4>
+      </div>
+      <div class="col-sm-4 tracks">
+        <% if album.label_id != nil %>
+          <h5><a href="/label/<%= album.label_id %>"><%= Label.find(album.label_id).name %></a></h5>
+        <% end %>
+        <ol>
+          <% album.tracks.each do |track| %>
+            <li><%= track.name %></li>
+          <% end %>
+        </ol>
+      </div>
+    </div>
+  <% end %>
+
 </div>
