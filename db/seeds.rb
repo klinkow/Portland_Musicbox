@@ -1,4 +1,3 @@
-
 require("/Users/Guest/Desktop/portland_musicbox/lib/album.rb")
 require("/Users/Guest/Desktop/portland_musicbox/lib/artist.rb")
 require("/Users/Guest/Desktop/portland_musicbox/lib/author.rb")
@@ -20,13 +19,14 @@ labels.each do |label|
 end
 
 
+<<<<<<< HEAD
 @artist1 = Artist.create(name: "The Smashing Pumpkins", profile_photo: "https://s-media-cache-ak0.pinimg.com/originals/2b/6e/d3/2b6ed3c7887a6af8908fd48e61b3f851.jpg", bio: "The Smashing Pumpkins are an American alternative rock band from Chicago, Illinois, formed in 1988. Formed by frontman Billy Corgan (lead vocals, guitar) and James Iha (guitar), the band included D'arcy Wretzky (bass guitar) and Jimmy Chamberlin (drums) in its original incarnation.")
 artist1_id = @artist1.id
 album_id = Album.create(name: "Siamese Dream", credits: "Siamese Dream is the second studio album by the American alternative rock band The Smashing Pumpkins, released on July 27, 1993 on Virgin Records. The album fused diverse influences such as shoegazing, dream pop, heavy metal and progressive rock", artist_id: artist1_id, label_id: Label.find_by(name: "Virgin").id, music_embed: "https://bandcamp.com/EmbeddedPlayer/album=1491365032/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=none/track=1741442397/transparent=true/", album_photo_name: "https://hackskeptic.files.wordpress.com/2014/08/siamese.jpg")
 author = Author.create(name: "Ned Raggett")
 Review.create(album_id: album_id.id, author_id: author.id, text: "It's sometimes easy to forget why Billy Corgan is famous, but these reissues of Smashing Pumpkins' first two albums underscore what made them so vital at the dawn of the 90s and why their influence is still felt today.")
 Tag.create(album_id: album_id.id, text: "Rock")
-tracks = ["Cherub Rock", "Quiet", "Today", "Hummer", "Rocket", "Disarm", "Soma", 	"Geek U.S.A.", "Mayonaise", "Spaceboy", "Silverfuck", "Sweet Sweet", "Luna"]
+tracks = ["Cherub Rock", "Quiet", "Today", "Hummer", "Rocket", "Disarm", "Soma", "Geek U.S.A.", "Mayonaise", "Spaceboy", "Silverfuck", "Sweet Sweet", "Luna"]
 length = ["4:58", "3:41", "3:19", "6:57", "4:06", "3:17", "6:39", "5:13", "5:50", "4:28", "8:43", "1:38", "3:20",]
 tracks.each do |track|
   album_id.tracks.create(name: track, track_number: (tracks.index(track)+1), album_id:album_id.id, artist_id: artist1_id, track_length: length[tracks.index(track)])
