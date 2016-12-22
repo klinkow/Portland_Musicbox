@@ -5,14 +5,17 @@
       <% if @user == nil %>
         <li><a href="/login">LOG IN</a></li>
       <% else %>
-        <li><a href="/user/account/<%= @user.id %>"><%= @user.username %> is logged in </a></li>
+        <li><a href="/user/account/<%= @user.id %>"><%= @user.username %>'s dashboard</a></li>
         <li><a href="/logout/<%= @user.id %>"> LOG OUT</a></li>
       <% end %>
     </ul>
 
+    <ul id="cart_ul">
+      <li class="cart"><a>CART: 0</a></li>
+    </ul>
+
 
     <ul id="create_account_ul">
-      <li><a>Cart: 0</a></li>
       <% if @user == nil %>
         <li><a href="/artist/new">CREATE ARTIST ACCOUNT</a></li>
         <li><a href="/user/new">CREATE USER ACCOUNT</a></li>
@@ -27,13 +30,13 @@
   <h2><a href="/">MUSIC MUSIC MUSIC</a></h2>
 
   <ul>
-
-    <li><a href="/reviews">REVIEWS</a></li>
     <li><a href="/artists">ARTISTS</a></li>
     <li><a href="/labels">LABELS</a></li>
     <li><a href="/albums">ALBUMS</a></li>
     <li><a href="/tags">TAGS</a></li>
     <li><a href="/store">STORE</a></li>
+  </ul>
+  <ul id="search">
     <form class="search" action="/search">
       <li><input type="text" class="form-control searchbar" name="searchinfo"></li>
       <li><button type="submit" class="btn btn-sm btn-danger" name="">SEARCH</button></li>
