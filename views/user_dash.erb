@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-10">
-      <h3 class="band_name"><%= @artist.name %></h3>
+      <h3 class="band_name"><a href="/user/account/<%= @artist.id %>"><%= @artist.name %></a></h3>
       <% if @form == nil %>
         <%= erb :profile %>
       <% elsif @form == "album" %>
