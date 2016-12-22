@@ -29,8 +29,10 @@
     <h4>by <a href="#"><%= @album.reviews[0].author() %></a></h4><br><br>
     <h4>
       <a href="/albums">Back</a>
-      <% if @user.admin == true %>
-        <a href="/new_review"><button class="btn btn-danger">Add Review</button></a>
+      <% if @user != nil %>
+        <% if @user.admin == true %>
+          <a href="/new_review"><button class="btn btn-danger">Add Review</button></a>
+        <% end %>
       <% end %>
     </h4>
   <% else %>
@@ -61,8 +63,10 @@
       <% @album.tags.each do |tag| %>
         <li role="presentation"><a href="#"><%= tag.text %></a></li>
       <% end %>
-      <% if @user != nil & @user.admin == true%>
-        <a href="/albums/<%= @album.id %>/tags"><button class="btn btn-danger">Manage Tags</button></a>
+      <% if @user != nil %>
+        <% if @user.admin == true %>
+          <a href="/albums/<%= @album.id %>/tags"><button class="btn btn-danger">Manage Tags</button></a>
+        <% end %>
       <% end %>
     </ul>
 
