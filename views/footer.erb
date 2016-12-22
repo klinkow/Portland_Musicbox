@@ -1,0 +1,26 @@
+<footer class="container-fluid footer">
+<div class="row">
+  <div class="col-sm-6">
+    <a href="#"><img class="social-icon img-responsive" src="<%= '/fb.png' %>"></a>
+    <a href="#"><img class="social-icon img-responsive" src="<%= '/insta.png' %>"></a>
+    <a href="#"><img class="social-icon img-responsive" src="<%= '/twitt.png' %>"></a>
+  </div>
+  <div class="col-sm-3">
+    <ul class="footer-work">
+      <li><a href="#">Careers</a></li>
+      <li><a href="#">Advertisting</a></li>
+      <li><a href="#"></a></li>
+    </ul>
+  </div>
+  <div class="col-sm-3">
+    <ul class="footer-log">
+      <li><a href="/user/account/<%= @user.id %>"><%= @user.username %>'s dashboard</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="#">Return Policy</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="/logout/<%= @user.id %>"> Log Out</a></li>
+    </ul>
+  </div>
+  </div>
+</div>
+</footer>
